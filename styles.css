@@ -12,6 +12,8 @@ body {
 }
 
 #search-logo {
+    height: 16em;
+    width: 16em;
     max-width: 80%;
     margin: 15vh auto 2em auto;
     display: block;
