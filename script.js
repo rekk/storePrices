@@ -13,8 +13,7 @@ const onSearchChange = (e) => {
     );
 
     if (matches.length < 1) {
-        const container = createSearchEntry('No results found!');
-        container.classList.add('error');
+        const container = createErrorEntry();
 
         removeAllChildren(results);
 
@@ -64,6 +63,21 @@ const createSearchEntry = (match) => {
     container.appendChild(title);
     container.appendChild(prices);
     container.classList.add('search-entry');
+
+    return container;
+};
+
+const createErrorEntry = () => {
+    const container = document.createElement('div');
+
+    const title = document.createElement('div');
+    const titleValue = document.createTextNode(match.name);
+
+    title.appendChild(titleValue);
+    title.classList.add('search-entry-title');
+    title.classList.add('error');
+
+    container.appendChild(title);
 
     return container;
 };
