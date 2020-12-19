@@ -2,7 +2,8 @@
 var searchField = document.getElementById('search-input');
 var results = document.getElementById('search-results');
 var onSearchChange = function (e) {
-    if (!results || !jsonData) {
+    var _a;
+    if (!results || !jsonData || !((_a = e === null || e === void 0 ? void 0 : e.currentTarget) === null || _a === void 0 ? void 0 : _a.value)) {
         return;
     }
     ;
@@ -13,7 +14,7 @@ var onSearchChange = function (e) {
     }
     ;
     var matches = jsonData.filter(function (item) {
-        return item.name.toLowerCase();
+        return item.name.toLowerCase().includes(newValue);
     });
     if (matches.length < 1) {
         var container = createErrorEntry();
@@ -35,17 +36,10 @@ var createSearchEntry = function (match) {
     var title = document.createElement('div');
     var titleValue = document.createTextNode(match.name);
     var prices = document.createElement('div');
-    // const priceEntries = Object.keys(match)
-    //     .map(key => { 
-    //         const keyPrice: number = match[key];
-    //         if (!keyPrice) {
-    //             return
-    //         };
-    //         return { [key]: parseFloat(match[key]) }
-    //     })
-    //     .filter(entry => entry);
     var storePrices = match.prices.filter(function (price) { return price; });
-    var priceNodes = storePrices.map(function (storePrice) { return document.createTextNode(storePrice.store.toUpperCase() + ": \u20AC" + storePrice.price); });
+    var priceNodes = storePrices.map(function (storePrice) {
+        return document.createTextNode(storePrice.store.toUpperCase() + ": \u20AC" + storePrice.price);
+    });
     title.appendChild(titleValue);
     title.classList.add('search-entry-title');
     priceNodes.forEach(function (node) {

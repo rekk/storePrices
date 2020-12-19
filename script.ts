@@ -2,24 +2,24 @@ const searchField: HTMLElement | null = document.getElementById('search-input');
 const results: HTMLElement | null = document.getElementById('search-results');
 
 const onSearchChange = (e: any): void => {
-    if (!results || !jsonData) {
-      return
+    if (!results || !jsonData || !e?.currentTarget?.value) {
+      return;
     };
 
     results.removeAttribute('hidden');
 
-    const newValue = e.currentTarget.value.trim().toLowerCase();
+    const newValue: string = e.currentTarget.value.trim().toLowerCase();
     
     if (!newValue) {
         return;
     };
 
-    const matches = jsonData.filter(item =>
-        item.name.toLowerCase()
+    const matches: ItemEntry[] = jsonData.filter((item: ItemEntry) =>
+        item.name.toLowerCase().includes(newValue)
     );
 
     if (matches.length < 1) {
-        const container = createErrorEntry();
+        const container: HTMLDivElement = createErrorEntry();
 
         removeAllChildren(results);
         results.appendChild(container);
@@ -27,8 +27,8 @@ const onSearchChange = (e: any): void => {
         return;
     };
 
-    const elements = matches.map(match => {
-        const container = createSearchEntry(match);
+    const elements: Array<HTMLDivElement> = matches.map((match: ItemEntry) => {
+        const container: HTMLDivElement = createSearchEntry(match);
 
         return container;
     });
@@ -39,27 +39,18 @@ const onSearchChange = (e: any): void => {
 
 searchField?.addEventListener('change', onSearchChange);
 
-const createSearchEntry = (match: ItemEntry) => {
-    const container = document.createElement('div');
+const createSearchEntry = (match: ItemEntry): HTMLDivElement => {
+    const container: HTMLDivElement = document.createElement('div') as HTMLDivElement;
 
-    const title = document.createElement('div');
-    const titleValue = document.createTextNode(match.name);
+    const title: HTMLDivElement = document.createElement('div') as HTMLDivElement;
+    const titleValue: Text = document.createTextNode(match.name) as Text;
 
-    const prices = document.createElement('div');
-    // const priceEntries = Object.keys(match)
-    //     .map(key => { 
-    //         const keyPrice: number = match[key];
+    const prices: HTMLDivElement = document.createElement('div') as HTMLDivElement;
+    const storePrices: StorePrice[] = match.prices.filter((price: StorePrice) => price);
 
-    //         if (!keyPrice) {
-    //             return
-    //         };
-
-    //         return { [key]: parseFloat(match[key]) }
-    //     })
-    //     .filter(entry => entry);
-    const storePrices: StorePrice[] = match.prices.filter(price => price);
-
-    const priceNodes = storePrices.map(storePrice => document.createTextNode(`${storePrice.store.toUpperCase()}: €${storePrice.price}`));
+    const priceNodes: Array<Text> = storePrices.map((storePrice: StorePrice ) =>
+      document.createTextNode(`${storePrice.store.toUpperCase()}: €${storePrice.price}`) as Text
+    );
 
     title.appendChild(titleValue);
     title.classList.add('search-entry-title');
@@ -75,11 +66,11 @@ const createSearchEntry = (match: ItemEntry) => {
     return container;
 };
 
-const createErrorEntry = () => {
-    const container = document.createElement('div');
+const createErrorEntry = (): HTMLDivElement => {
+    const container: HTMLDivElement = document.createElement('div') as HTMLDivElement;
 
-    const title = document.createElement('div');
-    const titleValue = document.createTextNode('No results found!');
+    const title: HTMLDivElement = document.createElement('div') as HTMLDivElement;
+    const titleValue: Text = document.createTextNode('No results found!') as Text;
 
     title.appendChild(titleValue);
     title.classList.add('search-entry-title');
@@ -90,11 +81,12 @@ const createErrorEntry = () => {
     return container;
 };
 
-const removeAllChildren = (element: HTMLElement) => {
+const removeAllChildren = (element: HTMLElement): void => {
     while (element.firstChild) {
       element.removeChild(element.firstChild);
     }
 };
+
 enum Store {
   HOFER = 'HOFER',
   EUROSPIN = 'EUROSPIN',
