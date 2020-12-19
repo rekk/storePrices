@@ -1,17 +1,25 @@
+#bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(180deg, #FFDBA6 0%, #FF9595 100%);
+}
+
 body {
     font-family: sans;
 }
 
 #search-logo {
     width: 16em;
-    max-width: 80vw;
+    max-width: 80%;
     height: 16em;
     margin: 15vh auto;
     background-color: lightgrey;
 }
 
 #search-box {
-    width: 24em;
     max-width: 80vw;
     margin: auto;
     text-align: center;
@@ -19,6 +27,7 @@ body {
 
 #search-input {
     margin: auto;
-    width: inherit;
-    max-width: inherit;
+    width: 24em;
+    max-width: 80%;
+    text-align: center;
 }
