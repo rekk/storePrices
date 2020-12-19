@@ -22,7 +22,7 @@ const onSearchChange = (e) => {
     };
 
     const elements = matches.map(match => {
-        const container = createSearchEntry(match.name);
+        const container = createSearchEntry(match);
 
         return container;
     });
@@ -34,11 +34,35 @@ const onSearchChange = (e) => {
 searchField.addEventListener('change', onSearchChange);
 searchField.value = '';
 
-const createSearchEntry = (text) => {
+const createSearchEntry = (match) => {
     const container = document.createElement('div');
-    const textNode = document.createTextNode(text);
-    container.appendChild(textNode);
+
+    const title = document.createElement('div');
+    const titleValue = document.createTextNode(match.name);
+
+    const prices = document.createElement('div');
+    const priceEntries = Object.keys(match)
+        .map(key => { 
+            const keyPrice = parseFloat(match[key]);
+
+            if (!keyPrice) {
+                return
+            };
+
+            return { [key]: parseFloat(match[key]) }
+        })
+        .filter(entry => entry);
+    const priceNodes = priceEntries.map(priceEntry => document.createTextNode(`${Object.keys(priceEntry)[0].toUpperCase()}: €${Object.values(priceEntry)[0]}`));
+
+    title.appendChild(titleValue);
+    title.classList.add('search-entry-title');
+    priceNodes.forEach(node => { 
+        prices.appendChild(node)
+        prices.appendChild(document.createElement('br'))
+    });
     
+    container.appendChild(title);
+    container.appendChild(prices);
     container.classList.add('search-entry');
 
     return container;
