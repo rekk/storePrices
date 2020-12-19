@@ -1,6 +1,7 @@
 * {
     font-family: sans-serif;
 }
+
 #bg {
     position: absolute;
     top: 0;
@@ -17,6 +18,12 @@
     max-width: 80%;
     margin: 15vh auto 2em auto;
     display: block;
+}
+
+@media only screen and (max-width: 600px) {
+    #search-logo {
+        margin: 5vh auto 2em auto;
+    }
 }
 
 #search-box {
@@ -37,7 +44,6 @@
         height: 4em;
     }
 }
-
 
 .search-entry {
     margin: auto;
