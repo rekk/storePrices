@@ -33,6 +33,13 @@ body {
     text-align: center;
 }
 
+@media only screen and (max-width: 600px) {
+    #search-input {
+        height: 4em;
+    }
+}
+
+
 .search-entry {
     margin: auto;
     width: 24em;
