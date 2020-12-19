@@ -1,0 +1,24 @@
+body {
+    font-family: sans;
+}
+
+#search-logo {
+    width: 16em;
+    max-width: 80vw;
+    height: 16em;
+    margin: 15vh auto;
+    background-color: lightgrey;
+}
+
+#search-box {
+    width: 24em;
+    max-width: 80vw;
+    margin: auto;
+    text-align: center;
+}
+
+#search-input {
+    margin: auto;
+    width: inherit;
+    max-width: inherit;
+}
