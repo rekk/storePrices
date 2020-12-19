@@ -71,7 +71,7 @@ const createErrorEntry = () => {
     const container = document.createElement('div');
 
     const title = document.createElement('div');
-    const titleValue = document.createTextNode(match.name);
+    const titleValue = document.createTextNode('No results found!');
 
     title.appendChild(titleValue);
     title.classList.add('search-entry-title');
