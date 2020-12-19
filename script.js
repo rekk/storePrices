@@ -2,6 +2,8 @@ const searchField = document.getElementById('search-input');
 const results = document.getElementById('search-results');
 
 const onSearchChange = (e) => {
+    results.removeAttribute('hidden');
+
     const newValue = e.target.value.trim().toLowerCase();
     
     if (!newValue) {
@@ -75,7 +77,6 @@ const createErrorEntry = () => {
 
     title.appendChild(titleValue);
     title.classList.add('search-entry-title');
-    title.classList.add('error');
 
     container.appendChild(title);
     container.classList.add('search-entry');
