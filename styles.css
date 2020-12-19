@@ -12,11 +12,9 @@ body {
 }
 
 #search-logo {
-    width: 16em;
     max-width: 80%;
-    height: 16em;
-    margin: 15vh auto;
-    background-color: lightgrey;
+    margin: 15vh auto 2em auto;
+    display: block;
 }
 
 #search-box {
@@ -30,4 +28,25 @@ body {
     width: 24em;
     max-width: 80%;
     text-align: center;
+}
+
+.search-entry {
+    margin: auto;
+    width: 24em;
+    max-width: 80%;
+    text-align: center;
+    border: 2px solid;
+    border-radius: 4px;
+    margin: 1em auto 1em auto;
+    background: wheat;
+    padding: 1em 0;
+    cursor: pointer;
+}
+
+.search-entry:hover {
+    background: white;
+}
+
+.error {
+    background: gold;
 }
