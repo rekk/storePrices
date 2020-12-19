@@ -78,6 +78,7 @@ const createErrorEntry = () => {
     title.classList.add('error');
 
     container.appendChild(title);
+    container.classList.add('search-entry');
 
     return container;
 };
