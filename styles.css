@@ -22,6 +22,8 @@
 
 @media only screen and (max-width: 600px) {
     #search-logo {
+        height: 8em;
+        width: 8em;
         margin: 5vh auto 2em auto;
     }
 }
