@@ -3,6 +3,8 @@ var searchField = document.getElementById('search-input');
 var results = document.getElementById('search-results');
 var onSearchChange = function (e) {
     var _a;
+    searchField === null || searchField === void 0 ? void 0 : searchField.setAttribute('disabled', '');
+    searchField === null || searchField === void 0 ? void 0 : searchField.removeAttribute('disabled');
     if (!results || !jsonData || !((_a = e === null || e === void 0 ? void 0 : e.currentTarget) === null || _a === void 0 ? void 0 : _a.value)) {
         return;
     }

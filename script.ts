@@ -2,6 +2,9 @@ const searchField: HTMLElement | null = document.getElementById('search-input');
 const results: HTMLElement | null = document.getElementById('search-results');
 
 const onSearchChange = (e: any): void => {
+    searchField?.setAttribute('disabled', '');
+    searchField?.removeAttribute('disabled');
+
     if (!results || !jsonData || !e?.currentTarget?.value) {
       return;
     };
