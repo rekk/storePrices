@@ -1,1036 +1,809 @@
-jsonData = { 
-  entries: [
-    {
-      name: "Canned sweet corn",
-      hofer: "1.44",
-      eurospin: "1.72",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Sunflower oil",
-      hofer: "1.18",
-      eurospin: "1.18",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Eggs",
-      hofer: "0.12",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Minced meat (beef)",
-      hofer: "6.58",
-      eurospin: "5.38",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Milk",
-      hofer: "0.65",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Blueberries (frozen)",
-      hofer: "4.78",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Strawberries (frozen)",
-      hofer: "3.30",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Raspberries (frozen)",
-      hofer: "5.40",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Waldfrucht (frozen)",
-      hofer: "3.30",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Peas (frozen)",
-      hofer: "1.50",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Sugar",
-      hofer: "0.79",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Cocoa powder",
-      hofer: "6.95",
-      eurospin: "8.00",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Hot chocolate",
-      hofer: "14.95",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Toast",
-      hofer: "1.18",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Šampinjoni",
-      hofer: "3.83",
-      eurospin: "3.58",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Burger cheese",
-      hofer: "4.36",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Gauda",
-      hofer:6.6,
-      eurospin: "",
-      tus: "EU06.78",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Coffee",
-      hofer: "6.99",
-      eurospin: "4.99",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Grapefruit (red)",
-      hofer: "2.29",
-      eurospin: "1.69",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Grapefruit (yellow)",
-      hofer: "1.89",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Butter",
-      hofer: "7.96",
-      eurospin: "7.20",
-      tus: "10.76",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Sauerkraut",
-      hofer: "1.93",
-      eurospin: "",
-      tus: "2.24",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Coconut flakes",
-      hofer: "3.95",
-      eurospin: "3.96",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Chianti",
-      hofer: "3.72",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Onion",
-      hofer: "0.68",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Mouthwash",
-      hofer: "2.58",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Ajvar",
-      hofer: "4.70",
-      eurospin: "",
-      tus: "6.13",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Grissini",
-      hofer: "5.00",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Tomato",
-      hofer: "1.69",
-      eurospin: "1.79",
-      tus: "3.00",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Cooking cream",
-      hofer: "2.12",
-      eurospin: "1.98",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Orange juice",
-      hofer: "1.57",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Greek yogurt",
-      hofer: "2.99",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Parmesan",
-      hofer: "11.60",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Cordon bleu",
-      hofer: "5.32",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Chicken (stegna)",
-      hofer: "7.00",
-      eurospin: "2.89",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Whole chicken",
-      hofer: "3.69",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Pork neck",
-      hofer: "6.00",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Chicken (bedra)",
-      hofer: "3.50",
-      eurospin: "1.69",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Ham",
-      hofer: "7.00",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Oranges",
-      hofer: "1.45",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Carrot",
-      hofer: "1.19",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Solata",
-      hofer: "0.70",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Onion",
-      hofer: "0.70",
-      eurospin: "0.59",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Potato",
-      hofer: "1.20",
-      eurospin: "0.45",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Toilet paper (per roll)",
-      hofer: "0.30",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Wet wipes (per 100pcs)",
-      hofer: "",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Lettuce (125g)",
-      hofer: "9.50",
-      eurospin: "6.95",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Kidney beans (425g)",
-      hofer: "0.90",
-      eurospin: "1.61",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Gehackte Tomaten",
-      hofer: "1.00",
-      eurospin: "1.10",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Mozzarella  (block)",
-      hofer: "5.00",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Smoked salmon",
-      hofer: "",
-      eurospin: "30.00",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Nori",
-      hofer: "",
-      eurospin: "125.00",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Detergent",
-      hofer: "4.00",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Smoky paprika",
-      hofer: "",
-      eurospin: "22.71",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Sweet paprika",
-      hofer: "",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Mascarpone",
-      hofer: "5.00",
-      eurospin: "5.00",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Ribs with skin",
-      hofer: "4.79",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Ribs KAT III",
-      hofer: "5.79",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "White chocolate",
-      hofer: "5.50",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Flour (type 500 / 400)",
-      hofer: "0.47",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Sirčki",
-      hofer: "4.60",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Baby Keksi",
-      hofer: "2.73",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Apricot jam",
-      hofer: "1.84",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Strawberry jam",
-      hofer: "1.84",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Cheap hazelnut/choco spread",
-      hofer: "2.52",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Tuna in oil",
-      hofer: "6.56",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Tuna in olive oil",
-      hofer: "8.32",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Yeast",
-      hofer: "4.76",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Sponge cloth",
-      hofer: "0.19",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Lime",
-      hofer: "3.50",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Pistachios",
-      hofer: "2.89",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Cabbage",
-      hofer: "0.69",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Cooking cream",
-      hofer: "1.98",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Rukola",
-      hofer: "7.96",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Red chili (whole)",
-      hofer: "-",
-      eurospin: "5.99",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Figs",
-      hofer: "4.69",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Ketchup",
-      hofer: "0.95",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Margarine",
-      hofer: "1.50",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Aloe Vera",
-      hofer: "16.50",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Muškat",
-      hofer: "14.75",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Hot paprika",
-      hofer: "14.75",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Curry powder",
-      hofer: "16.86",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Chicory",
-      hofer: "2.00",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Barley",
-      hofer: "1.85",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Citric acid",
-      hofer: "3.45",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Mustard",
-      hofer: "1.36",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Lemon squeezie",
-      hofer: "1.95",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Clean whole squid",
-      hofer: "11.18",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Squid rings",
-      hofer: "9.98",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Shrimp tails",
-      hofer: "17.88",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Napkins 450pcs/2.19",
-      hofer: "",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Paper towels 4rolls/1.09",
-      hofer: "",
-      eurospin: "0.30",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Geschälte Tomaten",
-      hofer: "1.63",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Tomato paste",
-      hofer: "0.67",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Balsamico (Basic)",
-      hofer: "2.58",
-      eurospin: "2.58",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Olives (pitiless)",
-      hofer: "4.76",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Por",
-      hofer: "4.30",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Avocado",
-      hofer: "1.49",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Kaki",
-      hofer: "1.99",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Balsamico (premium)",
-      hofer: "11.69",
-      eurospin: "11.98",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Cheap coffee beans",
-      hofer: "4.39",
-      eurospin: "4.99",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Sour cream",
-      hofer: "2.12",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Argentinian steak",
-      hofer: "19.97",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Chicken breast (filet)",
-      hofer: "8.78",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Tortilla chips",
-      hofer: "3.17",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Sweet cream",
-      hofer: "3.40",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Vanilla sugar",
-      hofer: "3.85",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Lemon squeezie",
-      hofer: "1.90",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Listnato testo",
-      hofer: "3.20",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Tequila",
-      hofer: "22.84",
-      eurospin: "",
-      tus: "20.00",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Whipping cream",
-      hofer: "",
-      eurospin: "2.77",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "(Frozen) cauliflower",
-      hofer: "1.69",
-      eurospin: "",
-      tus: "1.98",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Garlic",
-      hofer: "4.99",
-      eurospin: "",
-      tus: "7.99",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Carob (ground)",
-      hofer: "3.45",
-      eurospin: "3.95",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Worcestershire sauce",
-      hofer: "",
-      eurospin: "12.53",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Apple vinegar",
-      hofer: "",
-      eurospin: "2.68",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Caper 1.49)",
-      hofer: "4.54",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Anchoves 2.08)",
-      hofer: "14.33",
-      eurospin: "",
-      tus: "14.93",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Himalayan salt",
-      hofer: "",
-      eurospin: "4.50",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Dijon mustard",
-      hofer: "",
-      eurospin: "7.25",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Red paprika",
-      hofer: "3.00",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Sugar",
-      hofer: "0.79",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Camembert",
-      hofer: "7.92",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Pork rinds",
-      hofer: "12.45",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Pečena mesna slanina",
-      hofer: "6.39",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Ground cheese",
-      hofer: "6.60",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Mozzarella (small)",
-      hofer: "6.00",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Parmigiano Reggiano",
-      hofer: "15.92",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
-    },
-    {
-      name: "Grana padano",
-      hofer: "11.60",
-      eurospin: "",
-      tus: "",
-      spar: "",
-      mercator: ""
+export var Store;
+(function (Store) {
+    Store["HOFER"] = "HOFER";
+    Store["EUROSPIN"] = "EUROSPIN";
+    Store["TUS"] = "TUS";
+    Store["SPAR"] = "SPAR";
+    Store["MERCATOR"] = "MERCATOR";
+})(Store || (Store = {}));
+export var jsonData = [
+    {
+        name: 'Canned sweet corn',
+        prices: [
+            { store: Store.HOFER, price: 1.44, },
+            { store: Store.EUROSPIN, price: 1.72, },
+        ]
+    },
+    {
+        name: 'Sunflower oil',
+        prices: [
+            { store: Store.HOFER, price: 1.18, },
+            { store: Store.EUROSPIN, price: 1.18, },
+        ]
+    },
+    {
+        name: 'Eggs',
+        prices: [
+            { store: Store.HOFER, price: 0.12, },
+        ]
+    },
+    {
+        name: 'Minced meat (beef)',
+        prices: [
+            { store: Store.HOFER, price: 6.58, },
+            { store: Store.EUROSPIN, price: 5.38, },
+        ]
+    },
+    {
+        name: 'Milk',
+        prices: [
+            { store: Store.HOFER, price: 0.65, },
+        ]
+    },
+    {
+        name: 'Blueberries (frozen)',
+        prices: [
+            { store: Store.HOFER, price: 4.78, },
+        ]
+    },
+    {
+        name: 'Strawberries (frozen)',
+        prices: [
+            { store: Store.HOFER, price: 3.30, },
+        ]
+    },
+    {
+        name: 'Raspberries (frozen)',
+        prices: [
+            { store: Store.HOFER, price: 5.40, },
+        ]
+    },
+    {
+        name: 'Waldfrucht (frozen)',
+        prices: [
+            { store: Store.HOFER, price: 3.30, },
+        ]
+    },
+    {
+        name: 'Peas (frozen)',
+        prices: [
+            { store: Store.HOFER, price: 1.50, },
+        ]
+    },
+    {
+        name: 'Sugar',
+        prices: [
+            { store: Store.HOFER, price: 0.79, },
+        ]
+    },
+    {
+        name: 'Cocoa powder',
+        prices: [
+            { store: Store.HOFER, price: 6.95, },
+            { store: Store.EUROSPIN, price: 8.00, },
+        ]
+    },
+    {
+        name: 'Hot chocolate',
+        prices: [
+            { store: Store.HOFER, price: 14.95, },
+        ]
+    },
+    {
+        name: 'Toast',
+        prices: [
+            { store: Store.HOFER, price: 1.18, },
+        ]
+    },
+    {
+        name: 'Šampinjoni',
+        prices: [
+            { store: Store.HOFER, price: 3.83, },
+            { store: Store.EUROSPIN, price: 3.58, },
+        ]
+    },
+    {
+        name: 'Burger cheese',
+        prices: [
+            { store: Store.HOFER, price: 4.36, },
+        ]
+    },
+    {
+        name: 'Gauda',
+        prices: [
+            { store: Store.HOFER, price: 6.6, },
+        ]
+    },
+    {
+        name: 'Coffee',
+        prices: [
+            { store: Store.HOFER, price: 6.99, },
+            { store: Store.EUROSPIN, price: 4.99, },
+        ]
+    },
+    {
+        name: 'Grapefruit (red)',
+        prices: [
+            { store: Store.HOFER, price: 2.29, },
+            { store: Store.EUROSPIN, price: 1.69, },
+        ]
+    },
+    {
+        name: 'Grapefruit (yellow)',
+        prices: [
+            { store: Store.HOFER, price: 1.89, },
+        ]
+    },
+    {
+        name: 'Butter',
+        prices: [
+            { store: Store.HOFER, price: 7.96, },
+            { store: Store.EUROSPIN, price: 7.20, },
+            { store: Store.TUS, price: 10.76, },
+        ]
+    },
+    {
+        name: 'Sauerkraut',
+        prices: [
+            { store: Store.HOFER, price: 1.93, },
+            { store: Store.TUS, price: 2.24, },
+        ]
+    },
+    {
+        name: 'Coconut flakes',
+        prices: [
+            { store: Store.HOFER, price: 3.95, },
+            { store: Store.EUROSPIN, price: 3.96, },
+        ]
+    },
+    {
+        name: 'Chianti',
+        prices: [
+            { store: Store.HOFER, price: 3.72, },
+        ]
+    },
+    {
+        name: 'Onion',
+        prices: [
+            { store: Store.HOFER, price: 0.68, },
+        ]
+    },
+    {
+        name: 'Mouthwash',
+        prices: [
+            { store: Store.HOFER, price: 2.58, },
+        ]
+    },
+    {
+        name: 'Ajvar',
+        prices: [
+            { store: Store.HOFER, price: 4.70, },
+            { store: Store.TUS, price: 6.13, },
+        ]
+    },
+    {
+        name: 'Grissini',
+        prices: [
+            { store: Store.HOFER, price: 5.00, },
+        ]
+    },
+    {
+        name: 'Tomato',
+        prices: [
+            { store: Store.HOFER, price: 1.69, },
+            { store: Store.EUROSPIN, price: 1.79, },
+            { store: Store.TUS, price: 3.00, },
+        ]
+    },
+    {
+        name: 'Cooking cream',
+        prices: [
+            { store: Store.HOFER, price: 2.12, },
+            { store: Store.EUROSPIN, price: 1.98, },
+        ]
+    },
+    {
+        name: 'Orange juice',
+        prices: [
+            { store: Store.HOFER, price: 1.57, },
+        ]
+    },
+    {
+        name: 'Greek yogurt',
+        prices: [
+            { store: Store.HOFER, price: 2.99, },
+        ]
+    },
+    {
+        name: 'Parmesan',
+        prices: [
+            { store: Store.HOFER, price: 11.60, },
+        ]
+    },
+    {
+        name: 'Cordon bleu',
+        prices: [
+            { store: Store.HOFER, price: 5.32, },
+        ]
+    },
+    {
+        name: 'Chicken (stegna)',
+        prices: [
+            { store: Store.HOFER, price: 7.00, },
+            { store: Store.EUROSPIN, price: 2.89, },
+        ]
+    },
+    {
+        name: 'Whole chicken',
+        prices: [
+            { store: Store.HOFER, price: 3.69, },
+        ]
+    },
+    {
+        name: 'Pork neck',
+        prices: [
+            { store: Store.HOFER, price: 6.00, },
+        ]
+    },
+    {
+        name: 'Chicken (bedra)',
+        prices: [
+            { store: Store.HOFER, price: 3.50, },
+            { store: Store.EUROSPIN, price: 1.69, },
+        ]
+    },
+    {
+        name: 'Ham',
+        prices: [
+            { store: Store.HOFER, price: 7.00, },
+        ]
+    },
+    {
+        name: 'Oranges',
+        prices: [
+            { store: Store.HOFER, price: 1.45, },
+        ]
+    },
+    {
+        name: 'Carrot',
+        prices: [
+            { store: Store.HOFER, price: 1.19, },
+        ]
+    },
+    {
+        name: 'Solata',
+        prices: [
+            { store: Store.HOFER, price: 0.70, },
+        ]
+    },
+    {
+        name: 'Onion',
+        prices: [
+            { store: Store.HOFER, price: 0.70, },
+            { store: Store.EUROSPIN, price: 0.59, },
+        ]
+    },
+    {
+        name: 'Potato',
+        prices: [
+            { store: Store.HOFER, price: 1.20, },
+            { store: Store.EUROSPIN, price: 0.45, },
+        ]
+    },
+    {
+        name: 'Toilet paper (per roll)',
+        prices: [
+            { store: Store.HOFER, price: 0.30, },
+        ]
+    },
+    {
+        name: 'Wet wipes (per price: 100pcs)',
+        prices: []
+    },
+    {
+        name: 'Lettuce (price: 125g)',
+        prices: [
+            { store: Store.HOFER, price: 9.50, },
+            { store: Store.EUROSPIN, price: 6.95, },
+        ]
+    },
+    {
+        name: 'Kidney beans (price: 425g)',
+        prices: [
+            { store: Store.HOFER, price: 0.90, },
+            { store: Store.EUROSPIN, price: 1.61, },
+        ]
+    },
+    {
+        name: 'Gehackte Tomaten',
+        prices: [
+            { store: Store.HOFER, price: 1.00, },
+            { store: Store.EUROSPIN, price: 1.10, },
+        ]
+    },
+    {
+        name: 'Mozzarella  (block)',
+        prices: [
+            { store: Store.HOFER, price: 5.00, },
+        ]
+    },
+    {
+        name: 'Smoked salmon',
+        prices: [
+            { store: Store.EUROSPIN, price: 30.00, },
+        ]
+    },
+    {
+        name: 'Nori',
+        prices: [
+            { store: Store.EUROSPIN, price: 125.00, },
+        ]
+    },
+    {
+        name: 'Detergent',
+        prices: [
+            { store: Store.HOFER, price: 4.00, },
+        ]
+    },
+    {
+        name: 'Smoky paprika',
+        prices: [
+            { store: Store.EUROSPIN, price: 22.71, },
+        ]
+    },
+    {
+        name: 'Sweet paprika',
+        prices: []
+    },
+    {
+        name: 'Mascarpone',
+        prices: [
+            { store: Store.HOFER, price: 5.00, },
+            { store: Store.EUROSPIN, price: 5.00, },
+        ]
+    },
+    {
+        name: 'Ribs with skin',
+        prices: [
+            { store: Store.HOFER, price: 4.79, },
+        ]
+    },
+    {
+        name: 'Ribs KAT III',
+        prices: [
+            { store: Store.HOFER, price: 5.79, },
+        ]
+    },
+    {
+        name: 'White chocolate',
+        prices: [
+            { store: Store.HOFER, price: 5.50, },
+        ]
+    },
+    {
+        name: 'Flour (type price: 500 / 400)',
+        prices: [
+            { store: Store.HOFER, price: 0.47, },
+        ]
+    },
+    {
+        name: 'Sirčki',
+        prices: [
+            { store: Store.HOFER, price: 4.60, },
+        ]
+    },
+    {
+        name: 'Baby Keksi',
+        prices: [
+            { store: Store.HOFER, price: 2.73, },
+        ]
+    },
+    {
+        name: 'Apricot jam',
+        prices: [
+            { store: Store.HOFER, price: 1.84, },
+        ]
+    },
+    {
+        name: 'Strawberry jam',
+        prices: [
+            { store: Store.HOFER, price: 1.84, },
+        ]
+    },
+    {
+        name: 'Cheap hazelnut/choco spread',
+        prices: [
+            { store: Store.HOFER, price: 2.52, },
+        ]
+    },
+    {
+        name: 'Tuna in oil',
+        prices: [
+            { store: Store.HOFER, price: 6.56, },
+        ]
+    },
+    {
+        name: 'Tuna in olive oil',
+        prices: [
+            { store: Store.HOFER, price: 8.32, },
+        ]
+    },
+    {
+        name: 'Yeast',
+        prices: [
+            { store: Store.HOFER, price: 4.76, },
+        ]
+    },
+    {
+        name: 'Sponge cloth',
+        prices: [
+            { store: Store.HOFER, price: 0.19, },
+        ]
+    },
+    {
+        name: 'Lime',
+        prices: [
+            { store: Store.HOFER, price: 3.50, },
+        ]
+    },
+    {
+        name: 'Pistachios',
+        prices: [
+            { store: Store.HOFER, price: 2.89, },
+        ]
+    },
+    {
+        name: 'Cabbage',
+        prices: [
+            { store: Store.HOFER, price: 0.69, },
+        ]
+    },
+    {
+        name: 'Cooking cream',
+        prices: [
+            { store: Store.HOFER, price: 1.98, },
+        ]
+    },
+    {
+        name: 'Rukola',
+        prices: [
+            { store: Store.HOFER, price: 7.96, },
+        ]
+    },
+    {
+        name: 'Red chili (whole)',
+        prices: [
+            { store: Store.EUROSPIN, price: 5.99, },
+        ]
+    },
+    {
+        name: 'Figs',
+        prices: [
+            { store: Store.HOFER, price: 4.69, },
+        ]
+    },
+    {
+        name: 'Ketchup',
+        prices: [
+            { store: Store.HOFER, price: 0.95, },
+        ]
+    },
+    {
+        name: 'Margarine',
+        prices: [
+            { store: Store.HOFER, price: 1.50, },
+        ]
+    },
+    {
+        name: 'Aloe Vera',
+        prices: [
+            { store: Store.HOFER, price: 16.50, },
+        ]
+    },
+    {
+        name: 'Muškat',
+        prices: [
+            { store: Store.HOFER, price: 14.75, },
+        ]
+    },
+    {
+        name: 'Hot paprika',
+        prices: [
+            { store: Store.HOFER, price: 14.75, },
+        ]
+    },
+    {
+        name: 'Curry powder',
+        prices: [
+            { store: Store.HOFER, price: 16.86, },
+        ]
+    },
+    {
+        name: 'Chicory',
+        prices: [
+            { store: Store.HOFER, price: 2.00, },
+        ]
+    },
+    {
+        name: 'Barley',
+        prices: [
+            { store: Store.HOFER, price: 1.85, },
+        ]
+    },
+    {
+        name: 'Citric acid',
+        prices: [
+            { store: Store.HOFER, price: 3.45, },
+        ]
+    },
+    {
+        name: 'Mustard',
+        prices: [
+            { store: Store.HOFER, price: 1.36, },
+        ]
+    },
+    {
+        name: 'Lemon squeezie',
+        prices: [
+            { store: Store.HOFER, price: 1.95, },
+        ]
+    },
+    {
+        name: 'Clean whole squid',
+        prices: [
+            { store: Store.HOFER, price: 11.18, },
+        ]
+    },
+    {
+        name: 'Squid rings',
+        prices: [
+            { store: Store.HOFER, price: 9.98, },
+        ]
+    },
+    {
+        name: 'Shrimp tails',
+        prices: [
+            { store: Store.HOFER, price: 17.88, },
+        ]
+    },
+    {
+        name: 'Napkins price: 450pcs/2.19',
+        prices: []
+    },
+    {
+        name: 'Paper towels price: 4rolls/1.09',
+        prices: [
+            { store: Store.EUROSPIN, price: 0.30, },
+        ]
+    },
+    {
+        name: 'Geschälte Tomaten',
+        prices: [
+            { store: Store.HOFER, price: 1.63, },
+        ]
+    },
+    {
+        name: 'Tomato paste',
+        prices: [
+            { store: Store.HOFER, price: 0.67, },
+        ]
+    },
+    {
+        name: 'Balsamico (Basic)',
+        prices: [
+            { store: Store.HOFER, price: 2.58, },
+            { store: Store.EUROSPIN, price: 2.58, },
+        ]
+    },
+    {
+        name: 'Olives (pitiless)',
+        prices: [
+            { store: Store.HOFER, price: 4.76, },
+        ]
+    },
+    {
+        name: 'Por',
+        prices: [
+            { store: Store.HOFER, price: 4.30, },
+        ]
+    },
+    {
+        name: 'Avocado',
+        prices: [
+            { store: Store.HOFER, price: 1.49, },
+        ]
+    },
+    {
+        name: 'Kaki',
+        prices: [
+            { store: Store.HOFER, price: 1.99, },
+        ]
+    },
+    {
+        name: 'Balsamico (premium)',
+        prices: [
+            { store: Store.HOFER, price: 11.69, },
+            { store: Store.EUROSPIN, price: 11.98, },
+        ]
+    },
+    {
+        name: 'Cheap coffee beans',
+        prices: [
+            { store: Store.HOFER, price: 4.39, },
+            { store: Store.EUROSPIN, price: 4.99, },
+        ]
+    },
+    {
+        name: 'Sour cream',
+        prices: [
+            { store: Store.HOFER, price: 2.12, },
+        ]
+    },
+    {
+        name: 'Argentinian steak',
+        prices: [
+            { store: Store.HOFER, price: 19.97, },
+        ]
+    },
+    {
+        name: 'Chicken breast (filet)',
+        prices: [
+            { store: Store.HOFER, price: 8.78, },
+        ]
+    },
+    {
+        name: 'Tortilla chips',
+        prices: [
+            { store: Store.HOFER, price: 3.17, },
+        ]
+    },
+    {
+        name: 'Sweet cream',
+        prices: [
+            { store: Store.HOFER, price: 3.40, },
+        ]
+    },
+    {
+        name: 'Vanilla sugar',
+        prices: [
+            { store: Store.HOFER, price: 3.85, },
+        ]
+    },
+    {
+        name: 'Lemon squeezie',
+        prices: [
+            { store: Store.HOFER, price: 1.90, },
+        ]
+    },
+    {
+        name: 'Listnato testo',
+        prices: [
+            { store: Store.HOFER, price: 3.20, },
+        ]
+    },
+    {
+        name: 'Tequila',
+        prices: [
+            { store: Store.HOFER, price: 22.84, },
+            { store: Store.TUS, price: 20.00, },
+        ]
+    },
+    {
+        name: 'Whipping cream',
+        prices: [
+            { store: Store.EUROSPIN, price: 2.77, },
+        ]
+    },
+    {
+        name: '(Frozen) cauliflower',
+        prices: [
+            { store: Store.HOFER, price: 1.69, },
+            { store: Store.TUS, price: 1.98, },
+        ]
+    },
+    {
+        name: 'Garlic',
+        prices: [
+            { store: Store.HOFER, price: 4.99, },
+            { store: Store.TUS, price: 7.99, },
+        ]
+    },
+    {
+        name: 'Carob (ground)',
+        prices: [
+            { store: Store.HOFER, price: 3.45, },
+            { store: Store.EUROSPIN, price: 3.95, },
+        ]
+    },
+    {
+        name: 'Worcestershire sauce',
+        prices: [
+            { store: Store.EUROSPIN, price: 12.53, },
+        ]
+    },
+    {
+        name: 'Apple vinegar',
+        prices: [
+            { store: Store.EUROSPIN, price: 2.68, },
+        ]
+    },
+    {
+        name: 'Caper price: 1.49)',
+        prices: [
+            { store: Store.HOFER, price: 4.54, },
+        ]
+    },
+    {
+        name: 'Anchoves price: 2.08)',
+        prices: [
+            { store: Store.HOFER, price: 14.33, },
+            { store: Store.TUS, price: 14.93, },
+        ]
+    },
+    {
+        name: 'Himalayan salt',
+        prices: [
+            { store: Store.EUROSPIN, price: 4.50, },
+        ]
+    },
+    {
+        name: 'Dijon mustard',
+        prices: [
+            { store: Store.EUROSPIN, price: 7.25, },
+        ]
+    },
+    {
+        name: 'Red paprika',
+        prices: [
+            { store: Store.HOFER, price: 3.00, },
+        ]
+    },
+    {
+        name: 'Sugar',
+        prices: [
+            { store: Store.HOFER, price: 0.79, },
+        ]
+    },
+    {
+        name: 'Camembert',
+        prices: [
+            { store: Store.HOFER, price: 7.92, },
+        ]
+    },
+    {
+        name: 'Pork rinds',
+        prices: [
+            { store: Store.HOFER, price: 12.45, },
+        ]
+    },
+    {
+        name: 'Pečena mesna slanina',
+        prices: [
+            { store: Store.HOFER, price: 6.39, },
+        ]
+    },
+    {
+        name: 'Ground cheese',
+        prices: [
+            { store: Store.HOFER, price: 6.60, },
+        ]
+    },
+    {
+        name: 'Mozzarella (small)',
+        prices: [
+            { store: Store.HOFER, price: 6.00, },
+        ]
+    },
+    {
+        name: 'Parmigiano Reggiano',
+        prices: [
+            { store: Store.HOFER, price: 15.92, },
+        ]
+    },
+    {
+        name: 'Grana padano',
+        prices: [
+            { store: Store.HOFER, price: 11.60, },
+        ]
     }
-  ]
-}
+];
