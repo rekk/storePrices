@@ -1,10 +1,11 @@
+// TODO:
+// - Add tags to each item for querying categorically ('vegetable', 'meat'...)
+// - Store data externally (API?)
+// - Ability to add or edit items
 const searchField: HTMLElement | null = document.getElementById('search-input');
 const results: HTMLElement | null = document.getElementById('search-results');
 
 const onSearchChange = (e: any): void => {
-    searchField?.setAttribute('disabled', '');
-    setTimeout(() => document.getElementById('search-input')?.removeAttribute('disabled'), 100);
-
     if (!results || !jsonData || !e?.currentTarget?.value) {
       return;
     };
@@ -22,18 +23,14 @@ const onSearchChange = (e: any): void => {
     );
 
     if (matches.length < 1) {
-        const container: HTMLDivElement = createErrorEntry();
-
         removeAllChildren(results);
-        results.appendChild(container);
+        results.appendChild(createErrorEntry());
 
         return;
     };
 
     const elements: Array<HTMLDivElement> = matches.map((match: ItemEntry) => {
-        const container: HTMLDivElement = createSearchEntry(match);
-
-        return container;
+        return createSearchEntry(match);
     });
 
     removeAllChildren(results);
@@ -57,7 +54,7 @@ const createSearchEntry = (match: ItemEntry): HTMLDivElement => {
 
     title.appendChild(titleValue);
     title.classList.add('search-entry-title');
-    priceNodes.forEach(node => { 
+    priceNodes.forEach((node: Text) => { 
         prices.appendChild(node)
         prices.appendChild(document.createElement('br'))
     });

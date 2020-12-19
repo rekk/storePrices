@@ -1,10 +1,12 @@
 "use strict";
+// TODO:
+// - Add tags to each item for querying categorically ('vegetable', 'meat'...)
+// - Store data externally (API?)
+// - Ability to add or edit items
 var searchField = document.getElementById('search-input');
 var results = document.getElementById('search-results');
 var onSearchChange = function (e) {
     var _a;
-    searchField === null || searchField === void 0 ? void 0 : searchField.setAttribute('disabled', '');
-    setTimeout(function () { var _a; return (_a = document.getElementById('search-input')) === null || _a === void 0 ? void 0 : _a.removeAttribute('disabled'); }, 100);
     if (!results || !jsonData || !((_a = e === null || e === void 0 ? void 0 : e.currentTarget) === null || _a === void 0 ? void 0 : _a.value)) {
         return;
     }
@@ -19,15 +21,13 @@ var onSearchChange = function (e) {
         return item.name.toLowerCase().includes(newValue);
     });
     if (matches.length < 1) {
-        var container = createErrorEntry();
         removeAllChildren(results);
-        results.appendChild(container);
+        results.appendChild(createErrorEntry());
         return;
     }
     ;
     var elements = matches.map(function (match) {
-        var container = createSearchEntry(match);
-        return container;
+        return createSearchEntry(match);
     });
     removeAllChildren(results);
     elements.forEach(function (element) { return results.appendChild(element); });
