@@ -5,10 +5,11 @@
     width: 100vw;
     height: 100vh;
     background: linear-gradient(180deg, #FFDBA6 0%, #FF9595 100%);
+    overflow: auto;
 }
 
 body {
-    font-family: sans;
+    font-family: 'sans-serif';
 }
 
 #search-logo {
@@ -54,6 +55,9 @@ body {
     background: white;
 }
 
-.error {
-    background: gold;
+#search-results {
+    width: 24em;
+    height: 24em;
+    margin: 2em auto 2em auto;
+    overflow-y: scroll;
 }
