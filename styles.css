@@ -66,5 +66,6 @@ body {
     width: 24em;
     height: 24em;
     margin: 2em auto 2em auto;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
+
