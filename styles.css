@@ -48,12 +48,9 @@
 }
 
 .search-entry {
-    margin: auto;
     width: 24em;
     max-width: 80%;
     text-align: center;
-    border: 2px solid;
-    border-radius: 4px;
     margin: 1em auto 1em auto;
     background: wheat;
     padding: 1em 0;
