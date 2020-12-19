@@ -3,7 +3,7 @@ const results: HTMLElement | null = document.getElementById('search-results');
 
 const onSearchChange = (e: any): void => {
     searchField?.setAttribute('disabled', '');
-    searchField?.removeAttribute('disabled');
+    setTimeout(() => document.getElementById('search-input')?.removeAttribute('disabled'), 100);
 
     if (!results || !jsonData || !e?.currentTarget?.value) {
       return;
