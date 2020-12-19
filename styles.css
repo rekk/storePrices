@@ -1,3 +1,6 @@
+* {
+    font-family: sans-serif;
+}
 #bg {
     position: absolute;
     top: 0;
@@ -6,10 +9,6 @@
     height: 100%;
     background: linear-gradient(180deg, #FFDBA6 0%, #FF9595 100%);
     overflow: auto;
-}
-
-body {
-    font-family: 'sans-serif';
 }
 
 #search-logo {
