@@ -1,44 +1,90 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 // TODO:
 // - Add tags to each item for querying categorically ('vegetable', 'meat'...)
-// - Store data externally (API?)
 // - Ability to add or edit items
 var searchField = document.getElementById('search-input');
 var results = document.getElementById('search-results');
-var onSearchChange = function (e) {
+var onSearchChange = function (e) { return __awaiter(void 0, void 0, void 0, function () {
+    var newValue, itemEntries, matches, elements;
     var _a;
-    if (!results || !jsonData || !((_a = e === null || e === void 0 ? void 0 : e.currentTarget) === null || _a === void 0 ? void 0 : _a.value)) {
-        return;
-    }
-    ;
-    results.removeAttribute('hidden');
-    var newValue = e.currentTarget.value.trim().toLowerCase();
-    if (!newValue) {
-        return;
-    }
-    ;
-    var matches = jsonData.filter(function (item) {
-        return item.name.toLowerCase().includes(newValue);
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                if (!results || !((_a = e === null || e === void 0 ? void 0 : e.currentTarget) === null || _a === void 0 ? void 0 : _a.value)) {
+                    return [2 /*return*/];
+                }
+                ;
+                results.removeAttribute('hidden');
+                newValue = e.currentTarget.value.trim().toLowerCase();
+                if (!newValue) {
+                    return [2 /*return*/];
+                }
+                ;
+                return [4 /*yield*/, getItemEntries()];
+            case 1:
+                itemEntries = _b.sent();
+                matches = itemEntries.filter(function (item) {
+                    return (item.name.toLowerCase().includes(newValue));
+                });
+                if (matches.length < 1) {
+                    removeAllChildren(results);
+                    results.appendChild(createErrorEntry());
+                    return [2 /*return*/];
+                }
+                ;
+                elements = matches.map(function (match) {
+                    return createSearchEntry(match);
+                });
+                removeAllChildren(results);
+                elements.forEach(function (element) { return results.appendChild(element); });
+                return [2 /*return*/];
+        }
     });
-    if (matches.length < 1) {
-        removeAllChildren(results);
-        results.appendChild(createErrorEntry());
-        return;
-    }
-    ;
-    var elements = matches.map(function (match) {
-        return createSearchEntry(match);
-    });
-    removeAllChildren(results);
-    elements.forEach(function (element) { return results.appendChild(element); });
-};
+}); };
 searchField === null || searchField === void 0 ? void 0 : searchField.addEventListener('change', onSearchChange);
 var createSearchEntry = function (match) {
     var container = document.createElement('div');
     var title = document.createElement('div');
     var titleValue = document.createTextNode(match.name);
     var prices = document.createElement('div');
-    var storePrices = match.prices.filter(function (price) { return price; });
+    var storePrices = match.prices.filter(function (storePrice) { return storePrice.price; });
+    console.log(storePrices);
     var priceNodes = storePrices.map(function (storePrice) {
         return document.createTextNode(storePrice.store.toUpperCase() + ": \u20AC" + storePrice.price);
     });
@@ -76,804 +122,66 @@ var Store;
     Store["SPAR"] = "SPAR";
     Store["MERCATOR"] = "MERCATOR";
 })(Store || (Store = {}));
-var jsonData = [
-    {
-        name: 'Canned sweet corn',
-        prices: [
-            { store: Store.HOFER, price: 1.44, },
-            { store: Store.EUROSPIN, price: 1.72, },
-        ]
-    },
-    {
-        name: 'Sunflower oil',
-        prices: [
-            { store: Store.HOFER, price: 1.18, },
-            { store: Store.EUROSPIN, price: 1.18, },
-        ]
-    },
-    {
-        name: 'Eggs',
-        prices: [
-            { store: Store.HOFER, price: 0.12, },
-        ]
-    },
-    {
-        name: 'Minced meat (beef)',
-        prices: [
-            { store: Store.HOFER, price: 6.58, },
-            { store: Store.EUROSPIN, price: 5.38, },
-        ]
-    },
-    {
-        name: 'Milk',
-        prices: [
-            { store: Store.HOFER, price: 0.65, },
-        ]
-    },
-    {
-        name: 'Blueberries (frozen)',
-        prices: [
-            { store: Store.HOFER, price: 4.78, },
-        ]
-    },
-    {
-        name: 'Strawberries (frozen)',
-        prices: [
-            { store: Store.HOFER, price: 3.30, },
-        ]
-    },
-    {
-        name: 'Raspberries (frozen)',
-        prices: [
-            { store: Store.HOFER, price: 5.40, },
-        ]
-    },
-    {
-        name: 'Waldfrucht (frozen)',
-        prices: [
-            { store: Store.HOFER, price: 3.30, },
-        ]
-    },
-    {
-        name: 'Peas (frozen)',
-        prices: [
-            { store: Store.HOFER, price: 1.50, },
-        ]
-    },
-    {
-        name: 'Sugar',
-        prices: [
-            { store: Store.HOFER, price: 0.79, },
-        ]
-    },
-    {
-        name: 'Cocoa powder',
-        prices: [
-            { store: Store.HOFER, price: 6.95, },
-            { store: Store.EUROSPIN, price: 8.00, },
-        ]
-    },
-    {
-        name: 'Hot chocolate',
-        prices: [
-            { store: Store.HOFER, price: 14.95, },
-        ]
-    },
-    {
-        name: 'Toast',
-        prices: [
-            { store: Store.HOFER, price: 1.18, },
-        ]
-    },
-    {
-        name: 'Šampinjoni',
-        prices: [
-            { store: Store.HOFER, price: 3.83, },
-            { store: Store.EUROSPIN, price: 3.58, },
-        ]
-    },
-    {
-        name: 'Burger cheese',
-        prices: [
-            { store: Store.HOFER, price: 4.36, },
-        ]
-    },
-    {
-        name: 'Gauda',
-        prices: [
-            { store: Store.HOFER, price: 6.6, },
-        ]
-    },
-    {
-        name: 'Coffee',
-        prices: [
-            { store: Store.HOFER, price: 6.99, },
-            { store: Store.EUROSPIN, price: 4.99, },
-        ]
-    },
-    {
-        name: 'Grapefruit (red)',
-        prices: [
-            { store: Store.HOFER, price: 2.29, },
-            { store: Store.EUROSPIN, price: 1.69, },
-        ]
-    },
-    {
-        name: 'Grapefruit (yellow)',
-        prices: [
-            { store: Store.HOFER, price: 1.89, },
-        ]
-    },
-    {
-        name: 'Butter',
-        prices: [
-            { store: Store.HOFER, price: 7.96, },
-            { store: Store.EUROSPIN, price: 7.20, },
-            { store: Store.TUS, price: 10.76, },
-        ]
-    },
-    {
-        name: 'Sauerkraut',
-        prices: [
-            { store: Store.HOFER, price: 1.93, },
-            { store: Store.TUS, price: 2.24, },
-        ]
-    },
-    {
-        name: 'Coconut flakes',
-        prices: [
-            { store: Store.HOFER, price: 3.95, },
-            { store: Store.EUROSPIN, price: 3.96, },
-        ]
-    },
-    {
-        name: 'Chianti',
-        prices: [
-            { store: Store.HOFER, price: 3.72, },
-        ]
-    },
-    {
-        name: 'Onion',
-        prices: [
-            { store: Store.HOFER, price: 0.68, },
-        ]
-    },
-    {
-        name: 'Mouthwash',
-        prices: [
-            { store: Store.HOFER, price: 2.58, },
-        ]
-    },
-    {
-        name: 'Ajvar',
-        prices: [
-            { store: Store.HOFER, price: 4.70, },
-            { store: Store.TUS, price: 6.13, },
-        ]
-    },
-    {
-        name: 'Grissini',
-        prices: [
-            { store: Store.HOFER, price: 5.00, },
-        ]
-    },
-    {
-        name: 'Tomato',
-        prices: [
-            { store: Store.HOFER, price: 1.69, },
-            { store: Store.EUROSPIN, price: 1.79, },
-            { store: Store.TUS, price: 3.00, },
-        ]
-    },
-    {
-        name: 'Cooking cream',
-        prices: [
-            { store: Store.HOFER, price: 2.12, },
-            { store: Store.EUROSPIN, price: 1.98, },
-        ]
-    },
-    {
-        name: 'Orange juice',
-        prices: [
-            { store: Store.HOFER, price: 1.57, },
-        ]
-    },
-    {
-        name: 'Greek yogurt',
-        prices: [
-            { store: Store.HOFER, price: 2.99, },
-        ]
-    },
-    {
-        name: 'Parmesan',
-        prices: [
-            { store: Store.HOFER, price: 11.60, },
-        ]
-    },
-    {
-        name: 'Cordon bleu',
-        prices: [
-            { store: Store.HOFER, price: 5.32, },
-        ]
-    },
-    {
-        name: 'Chicken (stegna)',
-        prices: [
-            { store: Store.HOFER, price: 7.00, },
-            { store: Store.EUROSPIN, price: 2.89, },
-        ]
-    },
-    {
-        name: 'Whole chicken',
-        prices: [
-            { store: Store.HOFER, price: 3.69, },
-        ]
-    },
-    {
-        name: 'Pork neck',
-        prices: [
-            { store: Store.HOFER, price: 6.00, },
-        ]
-    },
-    {
-        name: 'Chicken (bedra)',
-        prices: [
-            { store: Store.HOFER, price: 3.50, },
-            { store: Store.EUROSPIN, price: 1.69, },
-        ]
-    },
-    {
-        name: 'Ham',
-        prices: [
-            { store: Store.HOFER, price: 7.00, },
-        ]
-    },
-    {
-        name: 'Oranges',
-        prices: [
-            { store: Store.HOFER, price: 1.45, },
-        ]
-    },
-    {
-        name: 'Carrot',
-        prices: [
-            { store: Store.HOFER, price: 1.19, },
-        ]
-    },
-    {
-        name: 'Solata',
-        prices: [
-            { store: Store.HOFER, price: 0.70, },
-        ]
-    },
-    {
-        name: 'Onion',
-        prices: [
-            { store: Store.HOFER, price: 0.70, },
-            { store: Store.EUROSPIN, price: 0.59, },
-        ]
-    },
-    {
-        name: 'Potato',
-        prices: [
-            { store: Store.HOFER, price: 1.20, },
-            { store: Store.EUROSPIN, price: 0.45, },
-        ]
-    },
-    {
-        name: 'Toilet paper (per roll)',
-        prices: [
-            { store: Store.HOFER, price: 0.30, },
-        ]
-    },
-    {
-        name: 'Wet wipes (per price: 100pcs)',
-        prices: []
-    },
-    {
-        name: 'Lettuce (price: 125g)',
-        prices: [
-            { store: Store.HOFER, price: 9.50, },
-            { store: Store.EUROSPIN, price: 6.95, },
-        ]
-    },
-    {
-        name: 'Kidney beans (price: 425g)',
-        prices: [
-            { store: Store.HOFER, price: 0.90, },
-            { store: Store.EUROSPIN, price: 1.61, },
-        ]
-    },
-    {
-        name: 'Gehackte Tomaten',
-        prices: [
-            { store: Store.HOFER, price: 1.00, },
-            { store: Store.EUROSPIN, price: 1.10, },
-        ]
-    },
-    {
-        name: 'Mozzarella  (block)',
-        prices: [
-            { store: Store.HOFER, price: 5.00, },
-        ]
-    },
-    {
-        name: 'Smoked salmon',
-        prices: [
-            { store: Store.EUROSPIN, price: 30.00, },
-        ]
-    },
-    {
-        name: 'Nori',
-        prices: [
-            { store: Store.EUROSPIN, price: 125.00, },
-        ]
-    },
-    {
-        name: 'Detergent',
-        prices: [
-            { store: Store.HOFER, price: 4.00, },
-        ]
-    },
-    {
-        name: 'Smoky paprika',
-        prices: [
-            { store: Store.EUROSPIN, price: 22.71, },
-        ]
-    },
-    {
-        name: 'Sweet paprika',
-        prices: []
-    },
-    {
-        name: 'Mascarpone',
-        prices: [
-            { store: Store.HOFER, price: 5.00, },
-            { store: Store.EUROSPIN, price: 5.00, },
-        ]
-    },
-    {
-        name: 'Ribs with skin',
-        prices: [
-            { store: Store.HOFER, price: 4.79, },
-        ]
-    },
-    {
-        name: 'Ribs KAT III',
-        prices: [
-            { store: Store.HOFER, price: 5.79, },
-        ]
-    },
-    {
-        name: 'White chocolate',
-        prices: [
-            { store: Store.HOFER, price: 5.50, },
-        ]
-    },
-    {
-        name: 'Flour (type price: 500 / 400)',
-        prices: [
-            { store: Store.HOFER, price: 0.47, },
-        ]
-    },
-    {
-        name: 'Sirčki',
-        prices: [
-            { store: Store.HOFER, price: 4.60, },
-        ]
-    },
-    {
-        name: 'Baby Keksi',
-        prices: [
-            { store: Store.HOFER, price: 2.73, },
-        ]
-    },
-    {
-        name: 'Apricot jam',
-        prices: [
-            { store: Store.HOFER, price: 1.84, },
-        ]
-    },
-    {
-        name: 'Strawberry jam',
-        prices: [
-            { store: Store.HOFER, price: 1.84, },
-        ]
-    },
-    {
-        name: 'Cheap hazelnut/choco spread',
-        prices: [
-            { store: Store.HOFER, price: 2.52, },
-        ]
-    },
-    {
-        name: 'Tuna in oil',
-        prices: [
-            { store: Store.HOFER, price: 6.56, },
-        ]
-    },
-    {
-        name: 'Tuna in olive oil',
-        prices: [
-            { store: Store.HOFER, price: 8.32, },
-        ]
-    },
-    {
-        name: 'Yeast',
-        prices: [
-            { store: Store.HOFER, price: 4.76, },
-        ]
-    },
-    {
-        name: 'Sponge cloth',
-        prices: [
-            { store: Store.HOFER, price: 0.19, },
-        ]
-    },
-    {
-        name: 'Lime',
-        prices: [
-            { store: Store.HOFER, price: 3.50, },
-        ]
-    },
-    {
-        name: 'Pistachios',
-        prices: [
-            { store: Store.HOFER, price: 2.89, },
-        ]
-    },
-    {
-        name: 'Cabbage',
-        prices: [
-            { store: Store.HOFER, price: 0.69, },
-        ]
-    },
-    {
-        name: 'Cooking cream',
-        prices: [
-            { store: Store.HOFER, price: 1.98, },
-        ]
-    },
-    {
-        name: 'Rukola',
-        prices: [
-            { store: Store.HOFER, price: 7.96, },
-        ]
-    },
-    {
-        name: 'Red chili (whole)',
-        prices: [
-            { store: Store.EUROSPIN, price: 5.99, },
-        ]
-    },
-    {
-        name: 'Figs',
-        prices: [
-            { store: Store.HOFER, price: 4.69, },
-        ]
-    },
-    {
-        name: 'Ketchup',
-        prices: [
-            { store: Store.HOFER, price: 0.95, },
-        ]
-    },
-    {
-        name: 'Margarine',
-        prices: [
-            { store: Store.HOFER, price: 1.50, },
-        ]
-    },
-    {
-        name: 'Aloe Vera',
-        prices: [
-            { store: Store.HOFER, price: 16.50, },
-        ]
-    },
-    {
-        name: 'Muškat',
-        prices: [
-            { store: Store.HOFER, price: 14.75, },
-        ]
-    },
-    {
-        name: 'Hot paprika',
-        prices: [
-            { store: Store.HOFER, price: 14.75, },
-        ]
-    },
-    {
-        name: 'Curry powder',
-        prices: [
-            { store: Store.HOFER, price: 16.86, },
-        ]
-    },
-    {
-        name: 'Chicory',
-        prices: [
-            { store: Store.HOFER, price: 2.00, },
-        ]
-    },
-    {
-        name: 'Barley',
-        prices: [
-            { store: Store.HOFER, price: 1.85, },
-        ]
-    },
-    {
-        name: 'Citric acid',
-        prices: [
-            { store: Store.HOFER, price: 3.45, },
-        ]
-    },
-    {
-        name: 'Mustard',
-        prices: [
-            { store: Store.HOFER, price: 1.36, },
-        ]
-    },
-    {
-        name: 'Lemon squeezie',
-        prices: [
-            { store: Store.HOFER, price: 1.95, },
-        ]
-    },
-    {
-        name: 'Clean whole squid',
-        prices: [
-            { store: Store.HOFER, price: 11.18, },
-        ]
-    },
-    {
-        name: 'Squid rings',
-        prices: [
-            { store: Store.HOFER, price: 9.98, },
-        ]
-    },
-    {
-        name: 'Shrimp tails',
-        prices: [
-            { store: Store.HOFER, price: 17.88, },
-        ]
-    },
-    {
-        name: 'Napkins price: 450pcs/2.19',
-        prices: []
-    },
-    {
-        name: 'Paper towels price: 4rolls/1.09',
-        prices: [
-            { store: Store.EUROSPIN, price: 0.30, },
-        ]
-    },
-    {
-        name: 'Geschälte Tomaten',
-        prices: [
-            { store: Store.HOFER, price: 1.63, },
-        ]
-    },
-    {
-        name: 'Tomato paste',
-        prices: [
-            { store: Store.HOFER, price: 0.67, },
-        ]
-    },
-    {
-        name: 'Balsamico (Basic)',
-        prices: [
-            { store: Store.HOFER, price: 2.58, },
-            { store: Store.EUROSPIN, price: 2.58, },
-        ]
-    },
-    {
-        name: 'Olives (pitiless)',
-        prices: [
-            { store: Store.HOFER, price: 4.76, },
-        ]
-    },
-    {
-        name: 'Por',
-        prices: [
-            { store: Store.HOFER, price: 4.30, },
-        ]
-    },
-    {
-        name: 'Avocado',
-        prices: [
-            { store: Store.HOFER, price: 1.49, },
-        ]
-    },
-    {
-        name: 'Kaki',
-        prices: [
-            { store: Store.HOFER, price: 1.99, },
-        ]
-    },
-    {
-        name: 'Balsamico (premium)',
-        prices: [
-            { store: Store.HOFER, price: 11.69, },
-            { store: Store.EUROSPIN, price: 11.98, },
-        ]
-    },
-    {
-        name: 'Cheap coffee beans',
-        prices: [
-            { store: Store.HOFER, price: 4.39, },
-            { store: Store.EUROSPIN, price: 4.99, },
-        ]
-    },
-    {
-        name: 'Sour cream',
-        prices: [
-            { store: Store.HOFER, price: 2.12, },
-        ]
-    },
-    {
-        name: 'Argentinian steak',
-        prices: [
-            { store: Store.HOFER, price: 19.97, },
-        ]
-    },
-    {
-        name: 'Chicken breast (filet)',
-        prices: [
-            { store: Store.HOFER, price: 8.78, },
-        ]
-    },
-    {
-        name: 'Tortilla chips',
-        prices: [
-            { store: Store.HOFER, price: 3.17, },
-        ]
-    },
-    {
-        name: 'Sweet cream',
-        prices: [
-            { store: Store.HOFER, price: 3.40, },
-        ]
-    },
-    {
-        name: 'Vanilla sugar',
-        prices: [
-            { store: Store.HOFER, price: 3.85, },
-        ]
-    },
-    {
-        name: 'Lemon squeezie',
-        prices: [
-            { store: Store.HOFER, price: 1.90, },
-        ]
-    },
-    {
-        name: 'Listnato testo',
-        prices: [
-            { store: Store.HOFER, price: 3.20, },
-        ]
-    },
-    {
-        name: 'Tequila',
-        prices: [
-            { store: Store.HOFER, price: 22.84, },
-            { store: Store.TUS, price: 20.00, },
-        ]
-    },
-    {
-        name: 'Whipping cream',
-        prices: [
-            { store: Store.EUROSPIN, price: 2.77, },
-        ]
-    },
-    {
-        name: '(Frozen) cauliflower',
-        prices: [
-            { store: Store.HOFER, price: 1.69, },
-            { store: Store.TUS, price: 1.98, },
-        ]
-    },
-    {
-        name: 'Garlic',
-        prices: [
-            { store: Store.HOFER, price: 4.99, },
-            { store: Store.TUS, price: 7.99, },
-        ]
-    },
-    {
-        name: 'Carob (ground)',
-        prices: [
-            { store: Store.HOFER, price: 3.45, },
-            { store: Store.EUROSPIN, price: 3.95, },
-        ]
-    },
-    {
-        name: 'Worcestershire sauce',
-        prices: [
-            { store: Store.EUROSPIN, price: 12.53, },
-        ]
-    },
-    {
-        name: 'Apple vinegar',
-        prices: [
-            { store: Store.EUROSPIN, price: 2.68, },
-        ]
-    },
-    {
-        name: 'Caper price: 1.49)',
-        prices: [
-            { store: Store.HOFER, price: 4.54, },
-        ]
-    },
-    {
-        name: 'Anchoves price: 2.08)',
-        prices: [
-            { store: Store.HOFER, price: 14.33, },
-            { store: Store.TUS, price: 14.93, },
-        ]
-    },
-    {
-        name: 'Himalayan salt',
-        prices: [
-            { store: Store.EUROSPIN, price: 4.50, },
-        ]
-    },
-    {
-        name: 'Dijon mustard',
-        prices: [
-            { store: Store.EUROSPIN, price: 7.25, },
-        ]
-    },
-    {
-        name: 'Red paprika',
-        prices: [
-            { store: Store.HOFER, price: 3.00, },
-        ]
-    },
-    {
-        name: 'Sugar',
-        prices: [
-            { store: Store.HOFER, price: 0.79, },
-        ]
-    },
-    {
-        name: 'Camembert',
-        prices: [
-            { store: Store.HOFER, price: 7.92, },
-        ]
-    },
-    {
-        name: 'Pork rinds',
-        prices: [
-            { store: Store.HOFER, price: 12.45, },
-        ]
-    },
-    {
-        name: 'Pečena mesna slanina',
-        prices: [
-            { store: Store.HOFER, price: 6.39, },
-        ]
-    },
-    {
-        name: 'Ground cheese',
-        prices: [
-            { store: Store.HOFER, price: 6.60, },
-        ]
-    },
-    {
-        name: 'Mozzarella (small)',
-        prices: [
-            { store: Store.HOFER, price: 6.00, },
-        ]
-    },
-    {
-        name: 'Parmigiano Reggiano',
-        prices: [
-            { store: Store.HOFER, price: 15.92, },
-        ]
-    },
-    {
-        name: 'Grana padano',
-        prices: [
-            { store: Store.HOFER, price: 11.60, },
-        ]
-    }
-];
+function httpGET(url) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/, fetch(url)
+                    .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error(response.statusText);
+                    }
+                    return response.json();
+                })];
+        });
+    });
+}
+function getSheetValues() {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, httpGET('https://sheets.googleapis.com/v4/spreadsheets/1Cx9IaOz8IYaJZu8Qerj2gLucWkhgHrj4AGuHiAtjSmg/values/Sheet1?key=AIzaSyAvMtXOs19y_kMNKSxvs8tCXGkof4vh3bY&valueRenderOption=UNFORMATTED_VALUE&majorDimension=ROWS')];
+                case 1: return [2 /*return*/, _a.sent()];
+            }
+        });
+    });
+}
+function getItemEntries() {
+    return __awaiter(this, void 0, void 0, function () {
+        var response, entries, itemEntries;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, getSheetValues()];
+                case 1:
+                    response = _a.sent();
+                    entries = response.values;
+                    console.log(entries);
+                    itemEntries = entries.map(function (entry) { return Object({
+                        name: entry[0],
+                        prices: [
+                            {
+                                store: Store.HOFER,
+                                price: Number(entry[1]),
+                            },
+                            {
+                                store: Store.EUROSPIN,
+                                price: Number(entry[2]),
+                            },
+                            {
+                                store: Store.TUS,
+                                price: Number(entry[3]),
+                            },
+                            {
+                                store: Store.SPAR,
+                                price: Number(entry[4]),
+                            },
+                            {
+                                store: Store.MERCATOR,
+                                price: Number(entry[5]),
+                            },
+                        ],
+                    }); });
+                    return [2 /*return*/, itemEntries];
+            }
+        });
+    });
+}
