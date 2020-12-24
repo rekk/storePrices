@@ -144,6 +144,10 @@ function getItemEntries() {
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
+                    if (!document.cookie.includes('itemEntriesLastUpdate')) {
+                        window.localStorage.clear();
+                    }
+                    ;
                     try {
                         storedItemEntries = JSON.parse((_a = window.localStorage.getItem('itemEntries')) !== null && _a !== void 0 ? _a : '');
                         return [2 /*return*/, storedItemEntries];
@@ -182,6 +186,7 @@ function getItemEntries() {
                         ],
                     }); });
                     window.localStorage.setItem('itemEntries', JSON.stringify(itemEntries));
+                    document.cookie = "itemEntriesLastUpdate=" + Date.now() + ";max-age=86400;samesite=strict";
                     return [2 /*return*/, itemEntries];
             }
         });

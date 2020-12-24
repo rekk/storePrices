@@ -109,6 +109,11 @@ async function getSheetValues (): Promise<SheetsResponse> {
 }
 
 async function getItemEntries (): Promise<ItemEntry[]> {
+
+    if (!document.cookie.includes('itemEntriesLastUpdate')) {
+        window.localStorage.clear();
+    };
+
     try {
         const storedItemEntries: ItemEntry[] = JSON.parse(window.localStorage.getItem('itemEntries') ?? '');
         return storedItemEntries;
@@ -146,6 +151,7 @@ async function getItemEntries (): Promise<ItemEntry[]> {
     }));
 
     window.localStorage.setItem('itemEntries', JSON.stringify(itemEntries));
+    document.cookie = `itemEntriesLastUpdate=${Date.now()};max-age=86400;samesite=strict`;
 
     return itemEntries;
 }
