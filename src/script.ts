@@ -1,6 +1,10 @@
 // TODO:
 // - Add tags to each item for querying categorically ('vegetable', 'meat'...)
 // - Ability to add or edit items
+
+import { Store } from './interfaces';
+import type { ItemEntry, StorePrice, SheetsResponse, SheetsResponseEntry } from './interfaces';
+
 const searchField: HTMLElement | null = document.getElementById('search-input');
 const results: HTMLElement | null = document.getElementById('search-results');
 
@@ -8,8 +12,6 @@ const onSearchChange = async (e: any): Promise<void> => {
     if (!results || !e?.currentTarget?.value) {
       return;
     };
-
-    results.removeAttribute('hidden');
 
     const newValue: string = e.currentTarget.value.trim().toLowerCase();
     
@@ -36,6 +38,7 @@ const onSearchChange = async (e: any): Promise<void> => {
 
     removeAllChildren(results);
     elements.forEach(element => results.appendChild(element));
+    results.removeAttribute('hidden');
 }; 
 
 searchField?.addEventListener('change', onSearchChange);
@@ -90,36 +93,6 @@ const removeAllChildren = (element: HTMLElement): void => {
     }
 };
 
-enum Store {
-  HOFER = 'HOFER',
-  EUROSPIN = 'EUROSPIN',
-  TUS = 'TUS',
-  SPAR = 'SPAR',
-  MERCATOR = 'MERCATOR'
-}
-
-interface StorePrice {
-  store: Store;
-  price: number;
-}
-
-interface ItemEntry {
-    name: string;
-    prices: StorePrice[];
-}
-
-// Indices returned from Sheets API
-// 1: Hofer
-// 2: EuroSpin
-// 3: Tuš	
-// 4: Spar
-// 5: Mercator
-type SheetsResponseEntry  = Array<string | number>;
-
-interface SheetsResponse {
-    values: SheetsResponseEntry[];
-}
-
 async function httpGET<T>(url: string): Promise<T> {
   return fetch(url)
     .then((response: Response) => {
@@ -136,6 +109,13 @@ async function getSheetValues (): Promise<SheetsResponse> {
 }
 
 async function getItemEntries (): Promise<ItemEntry[]> {
+    try {
+        const storedItemEntries: ItemEntry[] = JSON.parse(window.localStorage.getItem('itemEntries') ?? '');
+        return storedItemEntries;
+    } catch(e) {
+        console.warn('Could not find cached items, trying API call...');
+    }
+
     const response: SheetsResponse = await getSheetValues();
     const entries: SheetsResponseEntry[] = response.values;
     console.log(entries);
@@ -164,6 +144,8 @@ async function getItemEntries (): Promise<ItemEntry[]> {
             },
         ],
     }));
+
+    window.localStorage.setItem('itemEntries', JSON.stringify(itemEntries));
 
     return itemEntries;
 }

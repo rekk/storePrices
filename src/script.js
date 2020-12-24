@@ -1,4 +1,6 @@
-"use strict";
+// TODO:
+// - Add tags to each item for querying categorically ('vegetable', 'meat'...)
+// - Ability to add or edit items
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,9 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-// TODO:
-// - Add tags to each item for querying categorically ('vegetable', 'meat'...)
-// - Ability to add or edit items
+import { Store } from './interfaces';
 var searchField = document.getElementById('search-input');
 var results = document.getElementById('search-results');
 var onSearchChange = function (e) { return __awaiter(void 0, void 0, void 0, function () {
@@ -50,7 +50,6 @@ var onSearchChange = function (e) { return __awaiter(void 0, void 0, void 0, fun
                     return [2 /*return*/];
                 }
                 ;
-                results.removeAttribute('hidden');
                 newValue = e.currentTarget.value.trim().toLowerCase();
                 if (!newValue) {
                     return [2 /*return*/];
@@ -73,6 +72,7 @@ var onSearchChange = function (e) { return __awaiter(void 0, void 0, void 0, fun
                 });
                 removeAllChildren(results);
                 elements.forEach(function (element) { return results.appendChild(element); });
+                results.removeAttribute('hidden');
                 return [2 /*return*/];
         }
     });
@@ -114,14 +114,6 @@ var removeAllChildren = function (element) {
         element.removeChild(element.firstChild);
     }
 };
-var Store;
-(function (Store) {
-    Store["HOFER"] = "HOFER";
-    Store["EUROSPIN"] = "EUROSPIN";
-    Store["TUS"] = "TUS";
-    Store["SPAR"] = "SPAR";
-    Store["MERCATOR"] = "MERCATOR";
-})(Store || (Store = {}));
 function httpGET(url) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -146,13 +138,22 @@ function getSheetValues() {
     });
 }
 function getItemEntries() {
+    var _a;
     return __awaiter(this, void 0, void 0, function () {
-        var response, entries, itemEntries;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, getSheetValues()];
+        var storedItemEntries, response, entries, itemEntries;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    try {
+                        storedItemEntries = JSON.parse((_a = window.localStorage.getItem('itemEntries')) !== null && _a !== void 0 ? _a : '');
+                        return [2 /*return*/, storedItemEntries];
+                    }
+                    catch (e) {
+                        console.warn('Could not find cached items, trying API call...');
+                    }
+                    return [4 /*yield*/, getSheetValues()];
                 case 1:
-                    response = _a.sent();
+                    response = _b.sent();
                     entries = response.values;
                     console.log(entries);
                     itemEntries = entries.map(function (entry) { return Object({
@@ -180,6 +181,7 @@ function getItemEntries() {
                             },
                         ],
                     }); });
+                    window.localStorage.setItem('itemEntries', JSON.stringify(itemEntries));
                     return [2 /*return*/, itemEntries];
             }
         });
