@@ -43,7 +43,7 @@ var results = document.getElementById('search-results');
 var apiKey = getAPIKey();
 if (!apiKey || apiKey === '') {
     apiKey = prompt('Enter API key: ');
-    window.localStorage.setItem('apiKey', apiKey !== null && apiKey !== void 0 ? apiKey : '');
+    window.localStorage.setItem('apiKey', JSON.stringify({ value: apiKey }));
 }
 ;
 var onSearchChange = function (e) { return __awaiter(void 0, void 0, void 0, function () {
