@@ -2,11 +2,16 @@
 // - Add tags to each item for querying categorically ('vegetable', 'meat'...)
 // - Ability to add or edit items
 
-import { Store } from './interfaces';
+import { APIKey, Store } from './interfaces';
 import type { ItemEntry, StorePrice, SheetsResponse, SheetsResponseEntry } from './interfaces';
 
 const searchField: HTMLElement | null = document.getElementById('search-input');
 const results: HTMLElement | null = document.getElementById('search-results');
+
+let apiKey: string | null = getAPIKey();
+if (!apiKey || apiKey === '') {
+    apiKey = prompt('Enter API key: ');
+};
 
 const onSearchChange = async (e: any): Promise<void> => {
     if (!results || !e?.currentTarget?.value) {
@@ -106,7 +111,7 @@ async function httpGET<T>(url: string): Promise<T> {
 }
 
 async function getSheetValues (): Promise<SheetsResponse> {
-    return await httpGET(`https://sheets.googleapis.com/v4/spreadsheets/1Cx9IaOz8IYaJZu8Qerj2gLucWkhgHrj4AGuHiAtjSmg/values/Sheet1?key=${getAPIKey()}&valueRenderOption=UNFORMATTED_VALUE&majorDimension=ROWS`);
+    return await httpGET(`https://sheets.googleapis.com/v4/spreadsheets/1Cx9IaOz8IYaJZu8Qerj2gLucWkhgHrj4AGuHiAtjSmg/values/Sheet1?key=${apiKey}&valueRenderOption=UNFORMATTED_VALUE&majorDimension=ROWS`);
 }
 
 async function getItemEntries (): Promise<ItemEntry[]> {
@@ -157,17 +162,12 @@ async function getItemEntries (): Promise<ItemEntry[]> {
     return itemEntries;
 }
 
-interface APIKey {
-    value: string;
-}
-
-function getAPIKey (): string {
+function getAPIKey (): string | null {
     try {
         const storedAPIKey: APIKey = JSON.parse(window.localStorage.getItem('apiKey') ?? '');
-        console.log('storedAPIKey');
         return storedAPIKey.value;
     } catch(e) {
         console.warn('Could not find API key. Requests will fail.');
-        return '';
+        return null;
     }
 }

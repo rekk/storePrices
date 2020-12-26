@@ -27,3 +27,7 @@ export type SheetsResponseEntry  = Array<string | number>;
 export interface SheetsResponse {
     values: SheetsResponseEntry[];
 }
+
+export interface APIKey {
+    value: string;
+}
