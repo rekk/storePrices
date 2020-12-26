@@ -145,7 +145,7 @@ function getItemEntries() {
             switch (_b.label) {
                 case 0:
                     if (!document.cookie.includes('itemEntriesLastUpdate')) {
-                        window.localStorage.clear();
+                        window.localStorage.removeItem('itemEntries');
                     }
                     ;
                     try {
@@ -196,7 +196,8 @@ function getAPIKey() {
     var _a;
     try {
         var storedAPIKey = JSON.parse((_a = window.localStorage.getItem('apiKey')) !== null && _a !== void 0 ? _a : '');
-        return storedAPIKey;
+        console.log('storedAPIKey');
+        return storedAPIKey.value;
     }
     catch (e) {
         console.warn('Could not find API key. Requests will fail.');

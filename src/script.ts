@@ -112,7 +112,7 @@ async function getSheetValues (): Promise<SheetsResponse> {
 async function getItemEntries (): Promise<ItemEntry[]> {
 
     if (!document.cookie.includes('itemEntriesLastUpdate')) {
-        window.localStorage.clear();
+        window.localStorage.removeItem('itemEntries');
     };
 
     try {
@@ -157,12 +157,15 @@ async function getItemEntries (): Promise<ItemEntry[]> {
     return itemEntries;
 }
 
-type APIKey = string;
+interface APIKey {
+    value: string;
+}
 
 function getAPIKey (): string {
     try {
         const storedAPIKey: APIKey = JSON.parse(window.localStorage.getItem('apiKey') ?? '');
-        return storedAPIKey;
+        console.log('storedAPIKey');
+        return storedAPIKey.value;
     } catch(e) {
         console.warn('Could not find API key. Requests will fail.');
         return '';
