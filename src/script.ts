@@ -19,6 +19,8 @@ const onSearchChange = async (e: any): Promise<void> => {
         return;
     };
 
+    results.removeAttribute('hidden');
+
     const itemEntries: ItemEntry[] = await getItemEntries();
 
     const matches: ItemEntry[] = itemEntries.filter((item: ItemEntry) =>
@@ -38,7 +40,6 @@ const onSearchChange = async (e: any): Promise<void> => {
 
     removeAllChildren(results);
     elements.forEach(element => results.appendChild(element));
-    results.removeAttribute('hidden');
 }; 
 
 searchField?.addEventListener('change', onSearchChange);
@@ -105,7 +106,7 @@ async function httpGET<T>(url: string): Promise<T> {
 }
 
 async function getSheetValues (): Promise<SheetsResponse> {
-    return await httpGET('https://sheets.googleapis.com/v4/spreadsheets/1Cx9IaOz8IYaJZu8Qerj2gLucWkhgHrj4AGuHiAtjSmg/values/Sheet1?key=AIzaSyAvMtXOs19y_kMNKSxvs8tCXGkof4vh3bY&valueRenderOption=UNFORMATTED_VALUE&majorDimension=ROWS');
+    return await httpGET(`https://sheets.googleapis.com/v4/spreadsheets/1Cx9IaOz8IYaJZu8Qerj2gLucWkhgHrj4AGuHiAtjSmg/values/Sheet1?key=${getAPIKey()}&valueRenderOption=UNFORMATTED_VALUE&majorDimension=ROWS`);
 }
 
 async function getItemEntries (): Promise<ItemEntry[]> {
@@ -154,4 +155,16 @@ async function getItemEntries (): Promise<ItemEntry[]> {
     document.cookie = `itemEntriesLastUpdate=${Date.now()};max-age=86400;samesite=strict`;
 
     return itemEntries;
+}
+
+type APIKey = string;
+
+function getAPIKey (): string {
+    try {
+        const storedAPIKey: APIKey = JSON.parse(window.localStorage.getItem('apiKey') ?? '');
+        return storedAPIKey;
+    } catch(e) {
+        console.warn('Could not find API key. Requests will fail.');
+        return '';
+    }
 }

@@ -55,6 +55,7 @@ var onSearchChange = function (e) { return __awaiter(void 0, void 0, void 0, fun
                     return [2 /*return*/];
                 }
                 ;
+                results.removeAttribute('hidden');
                 return [4 /*yield*/, getItemEntries()];
             case 1:
                 itemEntries = _b.sent();
@@ -72,7 +73,6 @@ var onSearchChange = function (e) { return __awaiter(void 0, void 0, void 0, fun
                 });
                 removeAllChildren(results);
                 elements.forEach(function (element) { return results.appendChild(element); });
-                results.removeAttribute('hidden');
                 return [2 /*return*/];
         }
     });
@@ -131,7 +131,7 @@ function getSheetValues() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, httpGET('https://sheets.googleapis.com/v4/spreadsheets/1Cx9IaOz8IYaJZu8Qerj2gLucWkhgHrj4AGuHiAtjSmg/values/Sheet1?key=AIzaSyAvMtXOs19y_kMNKSxvs8tCXGkof4vh3bY&valueRenderOption=UNFORMATTED_VALUE&majorDimension=ROWS')];
+                case 0: return [4 /*yield*/, httpGET("https://sheets.googleapis.com/v4/spreadsheets/1Cx9IaOz8IYaJZu8Qerj2gLucWkhgHrj4AGuHiAtjSmg/values/Sheet1?key=" + getAPIKey() + "&valueRenderOption=UNFORMATTED_VALUE&majorDimension=ROWS")];
                 case 1: return [2 /*return*/, _a.sent()];
             }
         });
@@ -191,4 +191,15 @@ function getItemEntries() {
             }
         });
     });
+}
+function getAPIKey() {
+    var _a;
+    try {
+        var storedAPIKey = JSON.parse((_a = window.localStorage.getItem('apiKey')) !== null && _a !== void 0 ? _a : '');
+        return storedAPIKey;
+    }
+    catch (e) {
+        console.warn('Could not find API key. Requests will fail.');
+        return '';
+    }
 }
