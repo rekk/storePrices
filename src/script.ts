@@ -11,6 +11,7 @@ const results: HTMLElement | null = document.getElementById('search-results');
 let apiKey: string | null = getAPIKey();
 if (!apiKey || apiKey === '') {
     apiKey = prompt('Enter API key: ');
+    window.localStorage.setItem('apiKey', apiKey ?? '');
 };
 
 const onSearchChange = async (e: any): Promise<void> => {
