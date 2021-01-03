@@ -7,6 +7,7 @@
     "webpack-cli": "^4.2.0"
   },
   "scripts": {
-      "build": "webpack"
+      "build": "webpack",
+      "build-watch": "tsc --watch & webpack --watch"
   }
 }
