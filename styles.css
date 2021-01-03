@@ -17,11 +17,33 @@
     }
 }
 
+#menu {
+    display: block;
+    width: 2em;
+    height: 2em;
+    margin: auto;
+    margin-top: 15vh;
+    background: rgba(0,255,0,0.5);
+    text-align: center;
+    border-radius: 0.25em;
+    border: none;
+} 
+
+#menu:hover {
+    background: rgba(0,255,0,1);
+    cursor: pointer;
+}
+
+#menu:active {
+    background: rgba(0,200,0,1);
+    cursor: pointer;
+}
+
 #search-logo {
     height: 16em;
     width: 16em;
     max-width: 80%;
-    margin: 15vh auto 2em auto;
+    margin: 2em auto 2em auto;
     display: block;
 }
 

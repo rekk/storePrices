@@ -46,45 +46,48 @@ if (!apiKey || apiKey === '') {
     window.localStorage.setItem('apiKey', JSON.stringify({ value: apiKey }));
 }
 ;
-var onSearchChange = function (e) { return __awaiter(void 0, void 0, void 0, function () {
-    var newValue, itemEntries, matches, elements;
+function onSearchChange(e) {
     var _a;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                if (!results || !((_a = e === null || e === void 0 ? void 0 : e.currentTarget) === null || _a === void 0 ? void 0 : _a.value)) {
-                    return [2 /*return*/];
-                }
-                ;
-                newValue = e.currentTarget.value.trim().toLowerCase();
-                if (!newValue) {
-                    return [2 /*return*/];
-                }
-                ;
-                results.removeAttribute('hidden');
-                return [4 /*yield*/, getItemEntries()];
-            case 1:
-                itemEntries = _b.sent();
-                matches = itemEntries.filter(function (item) {
-                    return (item.name.toLowerCase().includes(newValue));
-                });
-                if (matches.length < 1) {
+    return __awaiter(this, void 0, void 0, function () {
+        var newValue, itemEntries, matches, elements;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    if (!results || !((_a = e === null || e === void 0 ? void 0 : e.currentTarget) === null || _a === void 0 ? void 0 : _a.value)) {
+                        return [2 /*return*/];
+                    }
+                    ;
+                    newValue = e.currentTarget.value.trim().toLowerCase();
+                    if (!newValue) {
+                        return [2 /*return*/];
+                    }
+                    ;
+                    results.removeAttribute('hidden');
+                    return [4 /*yield*/, getItemEntries()];
+                case 1:
+                    itemEntries = _b.sent();
+                    matches = itemEntries.filter(function (item) {
+                        return (item.name.toLowerCase().includes(newValue));
+                    });
+                    if (matches.length < 1) {
+                        removeAllChildren(results);
+                        results.appendChild(createErrorEntry());
+                        return [2 /*return*/];
+                    }
+                    ;
+                    elements = matches.map(function (match) {
+                        return createSearchEntry(match);
+                    });
                     removeAllChildren(results);
-                    results.appendChild(createErrorEntry());
+                    elements.forEach(function (element) { return results.appendChild(element); });
                     return [2 /*return*/];
-                }
-                ;
-                elements = matches.map(function (match) {
-                    return createSearchEntry(match);
-                });
-                removeAllChildren(results);
-                elements.forEach(function (element) { return results.appendChild(element); });
-                return [2 /*return*/];
-        }
+            }
+        });
     });
-}); };
+}
+;
 searchField === null || searchField === void 0 ? void 0 : searchField.addEventListener('change', onSearchChange);
-var createSearchEntry = function (match) {
+function createSearchEntry(match) {
     var container = document.createElement('div');
     var title = document.createElement('div');
     var titleValue = document.createTextNode(match.name);
@@ -104,8 +107,9 @@ var createSearchEntry = function (match) {
     container.appendChild(prices);
     container.classList.add('search-entry');
     return container;
-};
-var createErrorEntry = function () {
+}
+;
+function createErrorEntry() {
     var container = document.createElement('div');
     var title = document.createElement('div');
     var titleValue = document.createTextNode('No results found!');
@@ -114,12 +118,14 @@ var createErrorEntry = function () {
     container.appendChild(title);
     container.classList.add('search-entry');
     return container;
-};
-var removeAllChildren = function (element) {
+}
+;
+function removeAllChildren(element) {
     while (element.firstChild) {
         element.removeChild(element.firstChild);
     }
-};
+}
+;
 function httpGET(url) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
@@ -205,7 +211,7 @@ function getAPIKey() {
         return storedAPIKey.value;
     }
     catch (e) {
-        console.warn('Could not find API key. Requests will fail.');
+        console.warn('Could not find API key.');
         return null;
     }
 }

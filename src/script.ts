@@ -14,7 +14,7 @@ if (!apiKey || apiKey === '') {
     window.localStorage.setItem('apiKey', JSON.stringify({ value: apiKey } as APIKey));
 };
 
-const onSearchChange = async (e: any): Promise<void> => {
+async function onSearchChange (e: any): Promise<void> {
     if (!results || !e?.currentTarget?.value) {
       return;
     };
@@ -50,7 +50,7 @@ const onSearchChange = async (e: any): Promise<void> => {
 
 searchField?.addEventListener('change', onSearchChange);
 
-const createSearchEntry = (match: ItemEntry): HTMLDivElement => {
+function createSearchEntry (match: ItemEntry): HTMLDivElement {
     const container: HTMLDivElement = document.createElement('div') as HTMLDivElement;
 
     const title: HTMLDivElement = document.createElement('div') as HTMLDivElement;
@@ -79,7 +79,7 @@ const createSearchEntry = (match: ItemEntry): HTMLDivElement => {
     return container;
 };
 
-const createErrorEntry = (): HTMLDivElement => {
+function createErrorEntry (): HTMLDivElement {
     const container: HTMLDivElement = document.createElement('div') as HTMLDivElement;
 
     const title: HTMLDivElement = document.createElement('div') as HTMLDivElement;
@@ -94,7 +94,7 @@ const createErrorEntry = (): HTMLDivElement => {
     return container;
 };
 
-const removeAllChildren = (element: HTMLElement): void => {
+function removeAllChildren (element: HTMLElement): void {
     while (element.firstChild) {
       element.removeChild(element.firstChild);
     }
@@ -168,7 +168,7 @@ function getAPIKey (): string | null {
         const storedAPIKey: APIKey = JSON.parse(window.localStorage.getItem('apiKey') ?? '');
         return storedAPIKey.value;
     } catch(e) {
-        console.warn('Could not find API key. Requests will fail.');
+        console.warn('Could not find API key.');
         return null;
     }
 }
