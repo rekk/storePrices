@@ -1,9 +1,9 @@
 enum Store {
-  HOFER = 'HOFER',
-  EUROSPIN = 'EUROSPIN',
-  TUS = 'TUS',
-  SPAR = 'SPAR',
-  MERCATOR = 'MERCATOR'
+  HOFER = 'hofer',
+  EUROSPIN = 'eurospin',
+  TUS = 'tus',
+  SPAR = 'spar',
+  MERCATOR = 'mercator'
 }
 
 export interface StorePrice {
@@ -15,13 +15,6 @@ export interface ItemEntry {
     name: string;
     prices: StorePrice[];
 }
-
-// Indices returned from Sheets API
-// 1: Hofer
-// 2: EuroSpin
-// 3: Tuš	
-// 4: Spar
-// 5: Mercator
 
 export interface JSONResponse {
     itemEntries: ItemEntry[];
