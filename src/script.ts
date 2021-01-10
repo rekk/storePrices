@@ -2,8 +2,7 @@
 // - Add tags to each item for querying categorically ('vegetable', 'meat'...)
 // - Ability to add or edit items
 
-import { APIKey, Store } from './interfaces';
-import type { ItemEntry, StorePrice, SheetsResponse, SheetsResponseEntry } from './interfaces';
+import type { APIKey, JSONResponse, ItemEntry, StorePrice } from './interfaces';
 
 const searchField: HTMLElement | null = document.getElementById('search-input');
 const results: HTMLElement | null = document.getElementById('search-results');
@@ -59,8 +58,6 @@ function createSearchEntry (match: ItemEntry): HTMLDivElement {
     const prices: HTMLDivElement = document.createElement('div') as HTMLDivElement;
     const storePrices: StorePrice[] = match.prices.filter((storePrice: StorePrice) => storePrice.price);
 
-    console.log(storePrices);
-
     const priceNodes: Array<Text> = storePrices.map((storePrice: StorePrice ) =>
       document.createTextNode(`${storePrice.store.toUpperCase()}: €${storePrice.price}`) as Text
     );
@@ -100,8 +97,15 @@ function removeAllChildren (element: HTMLElement): void {
     }
 };
 
-async function httpGET<T>(url: string): Promise<T> {
-  return fetch(url)
+async function httpGET<T>(url: string, headers?: HeadersInit): Promise<T> {
+  const request: Request = new Request(url, {
+    method: 'GET',
+    headers: headers,
+    mode: 'cors',
+    cache: 'default',
+  });
+
+  return fetch(request)
     .then((response: Response) => {
       if (!response.ok) {
         throw new Error(response.statusText)
@@ -111,8 +115,13 @@ async function httpGET<T>(url: string): Promise<T> {
     })
 }
 
-async function getSheetValues (): Promise<SheetsResponse> {
-    return await httpGET(`https://sheets.googleapis.com/v4/spreadsheets/1Cx9IaOz8IYaJZu8Qerj2gLucWkhgHrj4AGuHiAtjSmg/values/Sheet1?key=${apiKey}&valueRenderOption=UNFORMATTED_VALUE&majorDimension=ROWS`);
+async function getJSONValues (): Promise<JSONResponse> {
+    const response: JSONResponse =  await httpGET(
+      `https://api.jsonbin.io/b/5ffaf3ce55b359028dbd32e3`, 
+      { 'secret-key': apiKey ?? '' }
+    );
+
+    return response;
 }
 
 async function getItemEntries (): Promise<ItemEntry[]> {
@@ -125,37 +134,12 @@ async function getItemEntries (): Promise<ItemEntry[]> {
         const storedItemEntries: ItemEntry[] = JSON.parse(window.localStorage.getItem('itemEntries') ?? '');
         return storedItemEntries;
     } catch(e) {
+        // eslint-disable-next-line no-console
         console.warn('Could not find cached items, trying API call...');
     }
 
-    const response: SheetsResponse = await getSheetValues();
-    const entries: SheetsResponseEntry[] = response.values;
-    console.log(entries);
-    const itemEntries: ItemEntry[] = entries.map((entry: SheetsResponseEntry) => Object({
-        name: entry[0],
-        prices: [
-            {
-                store: Store.HOFER,
-                price: Number(entry[1]),
-            },
-            {
-                store: Store.EUROSPIN,
-                price: Number(entry[2]),
-            },
-            {
-                store: Store.TUS,
-                price: Number(entry[3]),
-            },
-            {
-                store: Store.SPAR,
-                price: Number(entry[4]),
-            },
-            {
-                store: Store.MERCATOR,
-                price: Number(entry[5]),
-            },
-        ],
-    }));
+    const response: JSONResponse = await getJSONValues();
+    const itemEntries: ItemEntry[] = response.itemEntries;
 
     window.localStorage.setItem('itemEntries', JSON.stringify(itemEntries));
     document.cookie = `itemEntriesLastUpdate=${Date.now()};max-age=86400;samesite=strict`;
@@ -168,6 +152,7 @@ function getAPIKey (): string | null {
         const storedAPIKey: APIKey = JSON.parse(window.localStorage.getItem('apiKey') ?? '');
         return storedAPIKey.value;
     } catch(e) {
+        // eslint-disable-next-line no-console 
         console.warn('Could not find API key.');
         return null;
     }

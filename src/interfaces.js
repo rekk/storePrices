@@ -1,4 +1,4 @@
-export var Store;
+var Store;
 (function (Store) {
     Store["HOFER"] = "HOFER";
     Store["EUROSPIN"] = "EUROSPIN";
@@ -6,3 +6,4 @@ export var Store;
     Store["SPAR"] = "SPAR";
     Store["MERCATOR"] = "MERCATOR";
 })(Store || (Store = {}));
+export {};

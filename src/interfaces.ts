@@ -1,4 +1,4 @@
-export enum Store {
+enum Store {
   HOFER = 'HOFER',
   EUROSPIN = 'EUROSPIN',
   TUS = 'TUS',
@@ -22,10 +22,9 @@ export interface ItemEntry {
 // 3: Tuš	
 // 4: Spar
 // 5: Mercator
-export type SheetsResponseEntry  = Array<string | number>;
 
-export interface SheetsResponse {
-    values: SheetsResponseEntry[];
+export interface JSONResponse {
+    itemEntries: ItemEntry[];
 }
 
 export interface APIKey {

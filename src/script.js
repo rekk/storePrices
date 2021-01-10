@@ -37,7 +37,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { Store } from './interfaces';
 var searchField = document.getElementById('search-input');
 var results = document.getElementById('search-results');
 var apiKey = getAPIKey();
@@ -93,7 +92,6 @@ function createSearchEntry(match) {
     var titleValue = document.createTextNode(match.name);
     var prices = document.createElement('div');
     var storePrices = match.prices.filter(function (storePrice) { return storePrice.price; });
-    console.log(storePrices);
     var priceNodes = storePrices.map(function (storePrice) {
         return document.createTextNode(storePrice.store.toUpperCase() + ": \u20AC" + storePrice.price);
     });
@@ -126,10 +124,17 @@ function removeAllChildren(element) {
     }
 }
 ;
-function httpGET(url) {
+function httpGET(url, headers) {
     return __awaiter(this, void 0, void 0, function () {
+        var request;
         return __generator(this, function (_a) {
-            return [2 /*return*/, fetch(url)
+            request = new Request(url, {
+                method: 'GET',
+                headers: headers,
+                mode: 'cors',
+                cache: 'default',
+            });
+            return [2 /*return*/, fetch(request)
                     .then(function (response) {
                     if (!response.ok) {
                         throw new Error(response.statusText);
@@ -139,12 +144,15 @@ function httpGET(url) {
         });
     });
 }
-function getSheetValues() {
+function getJSONValues() {
     return __awaiter(this, void 0, void 0, function () {
+        var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, httpGET("https://sheets.googleapis.com/v4/spreadsheets/1Cx9IaOz8IYaJZu8Qerj2gLucWkhgHrj4AGuHiAtjSmg/values/Sheet1?key=" + apiKey + "&valueRenderOption=UNFORMATTED_VALUE&majorDimension=ROWS")];
-                case 1: return [2 /*return*/, _a.sent()];
+                case 0: return [4 /*yield*/, httpGET("https://api.jsonbin.io/b/5ffaf3ce55b359028dbd32e3", { 'secret-key': apiKey !== null && apiKey !== void 0 ? apiKey : '' })];
+                case 1:
+                    response = _a.sent();
+                    return [2 /*return*/, response];
             }
         });
     });
@@ -152,7 +160,7 @@ function getSheetValues() {
 function getItemEntries() {
     var _a;
     return __awaiter(this, void 0, void 0, function () {
-        var storedItemEntries, response, entries, itemEntries;
+        var storedItemEntries, response, itemEntries;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
@@ -165,38 +173,13 @@ function getItemEntries() {
                         return [2 /*return*/, storedItemEntries];
                     }
                     catch (e) {
+                        // eslint-disable-next-line no-console
                         console.warn('Could not find cached items, trying API call...');
                     }
-                    return [4 /*yield*/, getSheetValues()];
+                    return [4 /*yield*/, getJSONValues()];
                 case 1:
                     response = _b.sent();
-                    entries = response.values;
-                    console.log(entries);
-                    itemEntries = entries.map(function (entry) { return Object({
-                        name: entry[0],
-                        prices: [
-                            {
-                                store: Store.HOFER,
-                                price: Number(entry[1]),
-                            },
-                            {
-                                store: Store.EUROSPIN,
-                                price: Number(entry[2]),
-                            },
-                            {
-                                store: Store.TUS,
-                                price: Number(entry[3]),
-                            },
-                            {
-                                store: Store.SPAR,
-                                price: Number(entry[4]),
-                            },
-                            {
-                                store: Store.MERCATOR,
-                                price: Number(entry[5]),
-                            },
-                        ],
-                    }); });
+                    itemEntries = response.itemEntries;
                     window.localStorage.setItem('itemEntries', JSON.stringify(itemEntries));
                     document.cookie = "itemEntriesLastUpdate=" + Date.now() + ";max-age=86400;samesite=strict";
                     return [2 /*return*/, itemEntries];
@@ -211,7 +194,9 @@ function getAPIKey() {
         return storedAPIKey.value;
     }
     catch (e) {
+        // eslint-disable-next-line no-console 
         console.warn('Could not find API key.');
         return null;
     }
 }
+export {};
