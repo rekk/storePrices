@@ -56,11 +56,10 @@ function createSearchEntry (match: ItemEntry): HTMLDivElement {
     const titleValue: Text = document.createTextNode(match.name) as Text;
 
     const prices: HTMLDivElement = document.createElement('div') as HTMLDivElement;
-    const storePrices: StorePrice[] = match.prices.filter((storePrice: StorePrice) => storePrice.price);
+    const storePrices: StorePrice[] = match.prices as StorePrice[];
 
-    const priceNodes: Array<Text> = storePrices.map((storePrice: StorePrice ) =>
-      document.createTextNode(`${storePrice.store.toUpperCase()}: €${storePrice.price}`) as Text
-    );
+    const priceNodes: Array<Text> = Object.entries(storePrices).map(
+      ([store, price]) => document.createTextNode(`${store.toUpperCase()}: €${price}`) as Text);
 
     title.appendChild(titleValue);
     title.classList.add('search-entry-title');
@@ -117,7 +116,7 @@ async function httpGET<T>(url: string, headers?: HeadersInit): Promise<T> {
 
 async function getJSONValues (): Promise<JSONResponse> {
     const response: JSONResponse =  await httpGET(
-      `https://api.jsonbin.io/b/5ffaf3ce55b359028dbd32e3`, 
+      `https://api.jsonbin.io/b/5ffaf3ce55b359028dbd32e3/2`,
       { 'secret-key': apiKey ?? '' }
     );
 

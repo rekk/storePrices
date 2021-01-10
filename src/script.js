@@ -91,9 +91,11 @@ function createSearchEntry(match) {
     var title = document.createElement('div');
     var titleValue = document.createTextNode(match.name);
     var prices = document.createElement('div');
-    var storePrices = match.prices.filter(function (storePrice) { return storePrice.price; });
-    var priceNodes = storePrices.map(function (storePrice) {
-        return document.createTextNode(storePrice.store.toUpperCase() + ": \u20AC" + storePrice.price);
+    var storePrices = match.prices;
+    console.log(storePrices);
+    var priceNodes = Object.entries(storePrices).map(function (_a) {
+        var store = _a[0], price = _a[1];
+        return document.createTextNode(store.toUpperCase() + ": \u20AC" + price);
     });
     title.appendChild(titleValue);
     title.classList.add('search-entry-title');
@@ -149,9 +151,11 @@ function getJSONValues() {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, httpGET("https://api.jsonbin.io/b/5ffaf3ce55b359028dbd32e3", { 'secret-key': apiKey !== null && apiKey !== void 0 ? apiKey : '' })];
+                case 0: return [4 /*yield*/, httpGET("https://api.jsonbin.io/b/5ffaf3ce55b359028dbd32e3/2", { 'secret-key': apiKey !== null && apiKey !== void 0 ? apiKey : '' })];
                 case 1:
                     response = _a.sent();
+                    // eslint-disable-next-line no-console
+                    console.log(response);
                     return [2 /*return*/, response];
             }
         });
