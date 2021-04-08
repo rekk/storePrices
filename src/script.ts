@@ -116,7 +116,7 @@ async function httpGET<T>(url: string, headers?: HeadersInit): Promise<T> {
 
 async function getJSONValues (): Promise<JSONResponse> {
     const response: JSONResponse =  await httpGET(
-      `https://api.jsonbin.io/b/5ffaf3ce55b359028dbd32e3/2`,
+      `https://api.jsonbin.io/b/5ffaf3ce55b359028dbd32e3/3`,
       { 'secret-key': apiKey ?? '' }
     );
 
