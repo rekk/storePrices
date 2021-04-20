@@ -1,4 +1,4 @@
-enum Store {
+export enum Store {
   HOFER = 'hofer',
   EUROSPIN = 'eurospin',
   TUS = 'tus',
