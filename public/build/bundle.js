@@ -859,11 +859,11 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[10] = list[i];
+    	child_ctx[13] = list[i];
     	return child_ctx;
     }
 
-    // (62:2) {:else}
+    // (74:2) {:else}
     function create_else_block(ctx) {
     	let input;
     	let mounted;
@@ -873,7 +873,7 @@ var app = (function () {
     		c: function create() {
     			input = element("input");
     			attr_dev(input, "placeholder", "API Key");
-    			add_location(input, file, 62, 4, 2351);
+    			add_location(input, file, 74, 4, 2950);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -881,8 +881,8 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input, "input", /*input_input_handler*/ ctx[6]),
-    					listen_dev(input, "keyup", /*handleApiKeyEnter*/ ctx[4], false, false, false)
+    					listen_dev(input, "input", /*input_input_handler*/ ctx[7]),
+    					listen_dev(input, "keyup", /*handleApiKeyEnter*/ ctx[5], false, false, false)
     				];
 
     				mounted = true;
@@ -906,14 +906,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(62:2) {:else}",
+    		source: "(74:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (51:2) {#if apiKeySubmitted}
+    // (63:2) {#if storedApiKey || apiKeySubmitted}
     function create_if_block(ctx) {
     	let searchfield;
     	let updating_currentQuery;
@@ -922,7 +922,7 @@ var app = (function () {
     	let current;
 
     	function searchfield_currentQuery_binding(value) {
-    		/*searchfield_currentQuery_binding*/ ctx[5](value);
+    		/*searchfield_currentQuery_binding*/ ctx[6](value);
     	}
 
     	let searchfield_props = {};
@@ -966,7 +966,7 @@ var app = (function () {
     			searchfield.$set(searchfield_changes);
     			const resultcontainer_changes = {};
 
-    			if (dirty & /*$$scope, currentQuery*/ 8196) {
+    			if (dirty & /*$$scope, currentQuery*/ 65540) {
     				resultcontainer_changes.$$scope = { dirty, ctx };
     			}
 
@@ -994,14 +994,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(51:2) {#if apiKeySubmitted}",
+    		source: "(63:2) {#if storedApiKey || apiKeySubmitted}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (58:6) {:catch}
+    // (70:6) {:catch}
     function create_catch_block(ctx) {
     	let t;
 
@@ -1024,18 +1024,18 @@ var app = (function () {
     		block,
     		id: create_catch_block.name,
     		type: "catch",
-    		source: "(58:6) {:catch}",
+    		source: "(70:6) {:catch}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (54:44)          {#each matchEntries(response.itemEntries, currentQuery) || [] as entry}
+    // (66:48)          {#each matchEntries(itemEntries, currentQuery) || [] as entry}
     function create_then_block(ctx) {
     	let each_1_anchor;
     	let current;
-    	let each_value = matchEntries(/*response*/ ctx[9].itemEntries, /*currentQuery*/ ctx[2]) || [];
+    	let each_value = matchEntries(/*itemEntries*/ ctx[12], /*currentQuery*/ ctx[2]) || [];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -1064,8 +1064,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*matchEntries, getJSONValues, currentQuery*/ 12) {
-    				each_value = matchEntries(/*response*/ ctx[9].itemEntries, /*currentQuery*/ ctx[2]) || [];
+    			if (dirty & /*matchEntries, getItemEntries, currentQuery*/ 20) {
+    				each_value = matchEntries(/*itemEntries*/ ctx[12], /*currentQuery*/ ctx[2]) || [];
     				validate_each_argument(each_value);
     				let i;
 
@@ -1120,20 +1120,20 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(54:44)          {#each matchEntries(response.itemEntries, currentQuery) || [] as entry}",
+    		source: "(66:48)          {#each matchEntries(itemEntries, currentQuery) || [] as entry}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (55:8) {#each matchEntries(response.itemEntries, currentQuery) || [] as entry}
+    // (67:8) {#each matchEntries(itemEntries, currentQuery) || [] as entry}
     function create_each_block(ctx) {
     	let result;
     	let current;
 
     	result = new Result({
-    			props: { entry: /*entry*/ ctx[10] },
+    			props: { entry: /*entry*/ ctx[13] },
     			$$inline: true
     		});
 
@@ -1147,7 +1147,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const result_changes = {};
-    			if (dirty & /*currentQuery*/ 4) result_changes.entry = /*entry*/ ctx[10];
+    			if (dirty & /*currentQuery*/ 4) result_changes.entry = /*entry*/ ctx[13];
     			result.$set(result_changes);
     		},
     		i: function intro(local) {
@@ -1168,7 +1168,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(55:8) {#each matchEntries(response.itemEntries, currentQuery) || [] as entry}",
+    		source: "(67:8) {#each matchEntries(itemEntries, currentQuery) || [] as entry}",
     		ctx
     	});
 
@@ -1197,7 +1197,7 @@ var app = (function () {
     	return block;
     }
 
-    // (53:4) <ResultContainer>
+    // (65:4) <ResultContainer>
     function create_default_slot(ctx) {
     	let await_block_anchor;
     	let current;
@@ -1210,11 +1210,11 @@ var app = (function () {
     		pending: create_pending_block,
     		then: create_then_block,
     		catch: create_catch_block,
-    		value: 9,
+    		value: 12,
     		blocks: [,,,]
     	};
 
-    	handle_promise(/*getJSONValues*/ ctx[3](), info);
+    	handle_promise(/*getItemEntries*/ ctx[4](), info);
 
     	const block = {
     		c: function create() {
@@ -1233,7 +1233,7 @@ var app = (function () {
 
     			{
     				const child_ctx = ctx.slice();
-    				child_ctx[9] = info.resolved;
+    				child_ctx[12] = info.resolved;
     				info.block.p(child_ctx, dirty);
     			}
     		},
@@ -1262,7 +1262,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(53:4) <ResultContainer>",
+    		source: "(65:4) <ResultContainer>",
     		ctx
     	});
 
@@ -1278,7 +1278,7 @@ var app = (function () {
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (/*apiKeySubmitted*/ ctx[1]) return 0;
+    		if (/*storedApiKey*/ ctx[3] || /*apiKeySubmitted*/ ctx[1]) return 0;
     		return 1;
     	}
 
@@ -1290,7 +1290,7 @@ var app = (function () {
     			main = element("main");
     			if_block.c();
     			attr_dev(main, "class", "svelte-1h6otfa");
-    			add_location(main, file, 49, 0, 1978);
+    			add_location(main, file, 61, 0, 2566);
     		},
     		l: function claim(nodes) {
     			throw new Error_1("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1400,9 +1400,18 @@ var app = (function () {
     	};
 
     	
-    	let apiKey;
+
+    	let storedApiKey = localStorage === null || localStorage === void 0
+    	? void 0
+    	: localStorage.apikey;
+
+    	let apiKey = storedApiKey;
     	let apiKeySubmitted = false;
     	let currentQuery;
+
+    	const storedEntries = localStorage === null || localStorage === void 0
+    	? void 0
+    	: localStorage.itementries;
 
     	function httpGET(url, headers) {
     		return __awaiter(this, void 0, void 0, function* () {
@@ -1434,9 +1443,19 @@ var app = (function () {
     		});
     	}
 
+    	function getItemEntries() {
+    		return __awaiter(this, void 0, void 0, function* () {
+    			if (storedEntries) return JSON.parse(storedEntries);
+    			const response = yield getJSONValues();
+    			localStorage.itementries = JSON.stringify(response.itemEntries);
+    			return response.itemEntries;
+    		});
+    	}
+
     	function handleApiKeyEnter(event) {
     		if (event.key === "Enter") {
     			$$invalidate(1, apiKeySubmitted = true);
+    			localStorage.apikey = apiKey;
     		}
     	}
 
@@ -1461,17 +1480,21 @@ var app = (function () {
     		Result,
     		ResultContainer,
     		SearchField,
+    		storedApiKey,
     		apiKey,
     		apiKeySubmitted,
     		currentQuery,
+    		storedEntries,
     		httpGET,
     		getJSONValues,
+    		getItemEntries,
     		matchEntries,
     		handleApiKeyEnter
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("__awaiter" in $$props) __awaiter = $$props.__awaiter;
+    		if ("storedApiKey" in $$props) $$invalidate(3, storedApiKey = $$props.storedApiKey);
     		if ("apiKey" in $$props) $$invalidate(0, apiKey = $$props.apiKey);
     		if ("apiKeySubmitted" in $$props) $$invalidate(1, apiKeySubmitted = $$props.apiKeySubmitted);
     		if ("currentQuery" in $$props) $$invalidate(2, currentQuery = $$props.currentQuery);
@@ -1485,7 +1508,8 @@ var app = (function () {
     		apiKey,
     		apiKeySubmitted,
     		currentQuery,
-    		getJSONValues,
+    		storedApiKey,
+    		getItemEntries,
     		handleApiKeyEnter,
     		searchfield_currentQuery_binding,
     		input_input_handler

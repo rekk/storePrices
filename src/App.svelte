@@ -3,10 +3,13 @@
   import ResultContainer from './ResultContainer.svelte';
   import SearchField from './SearchField.svelte';
   import type { ItemEntry, JSONResponse } from './interfaces';
-
-  let apiKey: string;
+  
+  let storedApiKey: string | undefined = localStorage?.apikey;
+  let apiKey: string | undefined = storedApiKey;
   let apiKeySubmitted: boolean = false;
   let currentQuery: string;
+
+  const storedEntries: string | undefined = localStorage?.itementries;
 
   async function httpGET<T>(url: string, headers?: HeadersInit): Promise<T> {
     const request: Request = new Request(url, {
@@ -35,6 +38,14 @@
       return response;
   }
 
+  async function getItemEntries (): Promise<ItemEntry[]> {
+    if (storedEntries) return JSON.parse(storedEntries) as ItemEntry[];
+
+    const response: JSONResponse = await getJSONValues();
+    localStorage.itementries = JSON.stringify(response.itemEntries);
+    return response.itemEntries;
+  }
+
   function matchEntries (entries: ItemEntry[], query: string): ItemEntry[] {
     return entries.filter((entry) =>
       entry.name.toLowerCase().includes(query?.toLowerCase())
@@ -44,16 +55,17 @@
   function handleApiKeyEnter (event: KeyboardEvent): void {
     if (event.key === 'Enter') {
       apiKeySubmitted = true;
+      localStorage.apikey = apiKey;
     }
   }
 </script>
 
 <main>
-  {#if apiKeySubmitted}
+  {#if storedApiKey || apiKeySubmitted}
     <SearchField bind:currentQuery={currentQuery} />
     <ResultContainer>
-      {#await getJSONValues() then response}
-        {#each matchEntries(response.itemEntries, currentQuery) || [] as entry}
+      {#await getItemEntries() then itemEntries}
+        {#each matchEntries(itemEntries, currentQuery) || [] as entry}
           <Result {entry} />
         {/each}
       {:catch}
