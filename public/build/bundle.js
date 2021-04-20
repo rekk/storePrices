@@ -583,7 +583,7 @@ var app = (function () {
     	return block;
     }
 
-    const func = entry => entry?.[0]?.toUpperCase() + ": " + entry?.[1];
+    const func = entry => entry?.[0]?.toUpperCase() + ": €" + entry?.[1];
 
     function instance$3($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
@@ -863,7 +863,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (74:2) {:else}
+    // (75:2) {:else}
     function create_else_block(ctx) {
     	let input;
     	let mounted;
@@ -873,7 +873,7 @@ var app = (function () {
     		c: function create() {
     			input = element("input");
     			attr_dev(input, "placeholder", "API Key");
-    			add_location(input, file, 74, 4, 2950);
+    			add_location(input, file, 75, 4, 2974);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -906,14 +906,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(74:2) {:else}",
+    		source: "(75:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (63:2) {#if storedApiKey || apiKeySubmitted}
+    // (64:2) {#if storedApiKey || apiKeySubmitted}
     function create_if_block(ctx) {
     	let searchfield;
     	let updating_currentQuery;
@@ -994,14 +994,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(63:2) {#if storedApiKey || apiKeySubmitted}",
+    		source: "(64:2) {#if storedApiKey || apiKeySubmitted}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (70:6) {:catch}
+    // (71:6) {:catch}
     function create_catch_block(ctx) {
     	let t;
 
@@ -1024,14 +1024,14 @@ var app = (function () {
     		block,
     		id: create_catch_block.name,
     		type: "catch",
-    		source: "(70:6) {:catch}",
+    		source: "(71:6) {:catch}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (66:48)          {#each matchEntries(itemEntries, currentQuery) || [] as entry}
+    // (67:48)          {#each matchEntries(itemEntries, currentQuery) || [] as entry}
     function create_then_block(ctx) {
     	let each_1_anchor;
     	let current;
@@ -1120,14 +1120,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(66:48)          {#each matchEntries(itemEntries, currentQuery) || [] as entry}",
+    		source: "(67:48)          {#each matchEntries(itemEntries, currentQuery) || [] as entry}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (67:8) {#each matchEntries(itemEntries, currentQuery) || [] as entry}
+    // (68:8) {#each matchEntries(itemEntries, currentQuery) || [] as entry}
     function create_each_block(ctx) {
     	let result;
     	let current;
@@ -1168,7 +1168,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(67:8) {#each matchEntries(itemEntries, currentQuery) || [] as entry}",
+    		source: "(68:8) {#each matchEntries(itemEntries, currentQuery) || [] as entry}",
     		ctx
     	});
 
@@ -1197,7 +1197,7 @@ var app = (function () {
     	return block;
     }
 
-    // (65:4) <ResultContainer>
+    // (66:4) <ResultContainer>
     function create_default_slot(ctx) {
     	let await_block_anchor;
     	let current;
@@ -1262,7 +1262,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(65:4) <ResultContainer>",
+    		source: "(66:4) <ResultContainer>",
     		ctx
     	});
 
@@ -1271,6 +1271,8 @@ var app = (function () {
 
     function create_fragment(ctx) {
     	let main;
+    	let h3;
+    	let t1;
     	let current_block_type_index;
     	let if_block;
     	let current;
@@ -1288,8 +1290,13 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			main = element("main");
+    			h3 = element("h3");
+    			h3.textContent = "Store Prices";
+    			t1 = space();
     			if_block.c();
-    			attr_dev(main, "class", "svelte-1h6otfa");
+    			attr_dev(h3, "class", "svelte-qxhv0t");
+    			add_location(h3, file, 62, 2, 2575);
+    			attr_dev(main, "class", "svelte-qxhv0t");
     			add_location(main, file, 61, 0, 2566);
     		},
     		l: function claim(nodes) {
@@ -1297,6 +1304,8 @@ var app = (function () {
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, main, anchor);
+    			append_dev(main, h3);
+    			append_dev(main, t1);
     			if_blocks[current_block_type_index].m(main, null);
     			current = true;
     		},

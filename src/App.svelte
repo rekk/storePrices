@@ -61,6 +61,7 @@
 </script>
 
 <main>
+  <h3>Store Prices</h3>
   {#if storedApiKey || apiKeySubmitted}
     <SearchField bind:currentQuery={currentQuery} />
     <ResultContainer>
@@ -84,6 +85,17 @@
 		max-width: 240px;
 		margin: 0 auto;
 	}
+
+  h3 {
+    color: tomato;
+    font-weight: lighter;
+    font-size: 4rem;
+    border-bottom: 1px solid tomato;
+    padding-bottom: 1rem;
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 2rem;
+  }
 
 	@media (min-width: 640px) {
 		main {

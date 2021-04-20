@@ -6,7 +6,7 @@
 
 <main class="result">
   <div class="result-name">{entry.name}</div>
-  {Object.entries(entry?.prices ?? {}).map(entry => entry?.[0]?.toUpperCase() + ': ' + entry?.[1])}
+  {Object.entries(entry?.prices ?? {}).map(entry => entry?.[0]?.toUpperCase() + ': €' + entry?.[1])}
 </main>
 
 <style>
